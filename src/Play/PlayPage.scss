@@ -1,0 +1,7 @@
+.PlayPage {
+  .PlayGrid {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(100, 30rem);
+  }
+}

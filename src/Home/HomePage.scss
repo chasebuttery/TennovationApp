@@ -1,0 +1,12 @@
+@import '../scss/colors.scss';
+@import '../scss/fonts.scss';
+@import '../scss/devices.scss';
+
+.HomePage {
+  height: 100%;
+  width: 100%;
+  color: $color-primary;
+}
+
+@include desktop {
+}

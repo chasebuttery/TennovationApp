@@ -1,0 +1,110 @@
+@import '../scss/colors.scss';
+@import '../scss/fonts.scss';
+@import '../scss/devices.scss';
+
+.NavBar {
+	height: 100%;
+	width: 100%;
+	font-size: x-small;
+
+	display: grid;
+	grid-template-columns: (33% auto);
+	grid-template-rows: 100%;
+	align-items: center;
+
+	a {
+		color: white;
+		text-decoration: none;
+		.Icon {
+			height: 3rem;
+			width: auto;
+		}
+	}
+
+	.Expander {
+		.ExpandButton {
+			outline: none;
+			border: none;
+			background-color: transparent;
+			.ExpandIcon {
+				height: 3rem;
+				width: auto;
+			}
+		}
+	}
+
+	.MainNav {
+		display: grid;
+		grid-template-columns: 50% 50%;
+		grid-template-rows: 100%;
+
+		.ProfileIcon {
+			border-radius: 50%;
+			height: 3rem;
+			width: auto;
+		}
+		.Text {
+			display: none;
+		}
+	}
+
+	.SecNav {
+		display: none;
+	}
+
+	.MobileNav {
+		position: absolute;
+		top: 0;
+		display: block;
+		z-index: 999;
+		background-color: rgba(0, 0, 0, 0.8);
+		width: 100%;
+		height: 100%;
+		display: grid;
+		align-items: center;
+	}
+}
+
+@include desktop {
+	.NavBar {
+		display: grid;
+		grid-template-columns: repeat(40% 60%);
+		//grid-template-rows: 100%;
+
+		a {
+			color: black;
+		}
+
+		.Expander {
+			display: none;
+		}
+
+		.MainNav {
+		}
+
+		.SecNav {
+			display: block;
+			display: grid;
+			grid-template-columns: 33% 33% 33%;
+			grid-template-rows: 100%;
+			position: relative;
+			height: 100%;
+			width: 100%;
+		}
+
+		.MobileNav {
+			display: block;
+			display: grid;
+			grid-template-columns: 33% 33% 33%;
+			grid-template-rows: 100%;
+			position: relative;
+			height: 100%;
+			width: 100%;
+			top: unset;
+			bottom: unset;
+			z-index: 0;
+			background-color: unset;
+			align-items: unset;
+		}
+	}
+}

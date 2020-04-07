@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Bellota+Text|Cinzel|Merriweather|Poppins&display=swap');
+@import './scss/fonts.scss';
+
+.App {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 8rem auto;
+
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Poiret One';
+  //color: black;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: black;
+}
