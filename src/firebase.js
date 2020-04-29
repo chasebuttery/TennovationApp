@@ -1,17 +1,16 @@
-import firebase from 'firebase';
+import firebase from 'firebase'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAJVnoO1MSI3PWoFupBqH_K7P2VOCkkcb8",
-    authDomain: "the-station-c5245.firebaseapp.com",
-    databaseURL: "https://the-station-c5245.firebaseio.com",
-    projectId: "the-station-c5245",
-    storageBucket: "the-station-c5245.appspot.com",
-    messagingSenderId: "487461900526",
-    appId: "1:487461900526:web:7fced99b1bef874e4923ff",
-    measurementId: "G-YBRBHFXBYK"
-  };
+  apiKey: 'AIzaSyDIv8hKsUGc92n3BMQibq4lxVmCRpmVIGE',
+  authDomain: 'tennovation-b93ce.firebaseapp.com',
+  databaseURL: 'https://tennovation-b93ce.firebaseio.com',
+  projectId: 'tennovation-b93ce',
+  storageBucket: 'tennovation-b93ce.appspot.com',
+  messagingSenderId: '736340379693',
+  appId: '1:736340379693:web:94a245b42604f996ed10a4',
+  measurementId: 'G-2228RLJNPM'
+}
 
+firebase.initializeApp(firebaseConfig)
 
-  firebase.initializeApp(firebaseConfig)
-
-  export default firebase;
+export default firebase

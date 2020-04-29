@@ -3,6 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom'
 import './HomePage.scss'
 import TennisEvent from '../Images/KTCQuail.jpeg'
 import CreateIcon from '../Images/AddCircle.svg'
+
 export default function HomePage () {
   const history = useHistory()
 
