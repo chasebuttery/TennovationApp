@@ -4,7 +4,7 @@ import AuthRoute from './AuthRoute'
 import HomePage from './Home/HomePage'
 import PlayPage from './Play/PlayPage'
 import ProfilePage from './Profile/ProfilePage'
-import EventsPage from './Events/EventsPage'
+import JoinPage from './Join/JoinPage'
 import PortfolioPage from './Portfolio/PortfolioPage'
 import CreatePage from './Create/CreatePage'
 import ActivtyPage from './Components/ActivityPage'
@@ -16,7 +16,7 @@ export default function Routes () {
       <Route exact path='/play' component={PlayPage} />
       <Route path='/play/:activityid' component={ActivtyPage} />
       <Route exact path='/profile' component={ProfilePage} />
-      <Route exact path='/events' component={EventsPage} />
+      <Route exact path='/join' component={JoinPage} />
       <Route exact path='/portfolio' component={PortfolioPage} />
       <AuthRoute exact path='/create' component={CreatePage} />
     </div>

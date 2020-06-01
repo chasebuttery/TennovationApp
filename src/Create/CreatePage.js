@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { addActivity } from "../Backend/ActivitiesDB";
 
 export default function CreatePage() {
+
   const [activity, setActivity] = useState({
     activityID: "",
     title: "",
     category: "",
+    categoryMap: ['categories', 'categ'],
     description: "",
     location: "",
     time: "",
@@ -89,15 +91,21 @@ export default function CreatePage() {
     <div className="CreatePage">
       <h1>Welcome To Tennovation Create</h1>
       <p>
-        Here you can create interactive group experiences. Right now we're
-        focused on play experiences. The thing is.. play is ambigous.. create
-        whatever you wish.
+        Here you can create activities experiences.. create
+        whatever you wish..
       </p>
       <form className="CreateActivity">
         <label>
           title
           <input type="text" name="title" onChange={handleTitleChange} />
         </label>
+        <select
+
+          >
+            {activity.categoryMap?.map((category ) => {
+              return <option key={category }>{category}</option>})
+            } || 'N/A'}
+          </select>
         <label>
           category
           <input type="text" name="category" onChange={handleCategoryChange} />

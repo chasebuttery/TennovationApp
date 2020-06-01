@@ -5,3 +5,12 @@
 // font-family: 'Fredericka the Great', cursive;
 // font-family: 'Josefin Slab', serif;
 // font-family: 'Poiret One', cursive;
+
+
+@font-face {
+    font-family: 'Zero Nero';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Zero Nero'), local('Zero Nero'),
+      url('./zeronero.ttf') format('truetype'); /* Safari, Android, iOS */
+  }

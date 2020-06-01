@@ -1,6 +1,8 @@
 import firebase from "./firebase";
 import { saveUser } from "./Backend/UserDB/User";
-import ProImg from "./Images/ProfileImage.jpeg";
+import ProImg from "./Images/profile.png";
+
+//Rewrite local user saves to only firestore so you can listen for user changes on the navbar and profile page
 
 export default {
   getProfileImg() {

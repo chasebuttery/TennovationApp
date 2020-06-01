@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import './NavBar.scss'
 import Logo from '../Images/tvthick.png'
-import NavMenu from '../Images/Menu.jpeg'
+import NavMenu from '../Images/nav.png'
 import Play from '../Images/Play.jpeg'
 //import Schedule from "../Images/Schedule.jpeg";
 import Portfolio from '../Images/Portfolio.jpeg'
 import Auth from '../Auth'
+
 
 export default function NavBar () {
   const [isExpanded, setIsExpanded] = useState(true)
@@ -20,6 +21,8 @@ export default function NavBar () {
     }
     getProfileImg()
   }, [profileIcon])
+
+  console.log(profileIcon)
 
   function expandNavbar () {
     setIsExpanded(!isExpanded)
@@ -41,7 +44,7 @@ export default function NavBar () {
         <div className='ProfileLink'>
           <NavLink activeClassName='active' to='/profile'>
             <img className='ProfileIcon' src={profileIcon} />
-            <h1 className='Text'> PROFILE </h1>
+            <h1 className='Text'> profile </h1>
           </NavLink>
         </div>
       </div>
@@ -49,22 +52,19 @@ export default function NavBar () {
         className={isExpanded ? 'SecNav' : 'MobileNav'}
         onClick={expandNavbar}
       >
-        <div>
-          <NavLink className='PlayLink' activeClassName='active' to='/play'>
-            <img className='Icon' src={Play} />
-            <h1 className='Text'> PLAY </h1>
+        <div className = 'PlayLink'>
+          <NavLink activeClassName='active' to='/play'>
+            <h1 className='Text'> play </h1>
           </NavLink>
         </div>
-        <div className='EventsLink'>
+        <div className='JoinLink'>
           <NavLink activeClassName='active' to='/events'>
-            <img className='Icon' src={Portfolio} />
-            <h1 className='Text'>EVENTS</h1>
+            <h1 className='Text'>join</h1>
           </NavLink>
         </div>
         <div className='PortfolioLink'>
           <NavLink activeClassName='active' to='/portfolio'>
-            <img className='Icon' src={Portfolio} />
-            <h1 className='Text'> ACTIVITY PORTFOLIO</h1>
+            <h1 className='Text'>activity portfolio</h1>
           </NavLink>
         </div>
       </div>

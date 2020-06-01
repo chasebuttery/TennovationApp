@@ -20,7 +20,8 @@ export default function SignInPage () {
         Auth.saveUser(user)
         Auth.saveToken(token)
         Auth.saveUserData()
-        window.location.reload()
+        console.log(user)
+        //window.location.reload()
       })
       .catch(function (error) {
         // Handle Errors here.
@@ -43,7 +44,7 @@ export default function SignInPage () {
       .then(function () {
         console.log('signed out')
 
-        window.location.reload()
+        //window.location.reload()
         localStorage.clear()
         // Sign-out successful.
       })
@@ -63,7 +64,6 @@ export default function SignInPage () {
       </div>
       <div>
         <h3>image change</h3>
-        <h1>THIS IS WHERE YOU CAN </h1>
       </div>
     </div>
   )
