@@ -12,8 +12,7 @@ export default function PlayPage() {
 		async function getActivities() {
 			const list = await getActivityList();
 			setActivities(list.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-			//Add activities to redux
-			//addActivities(list);
+			
 		}
 		getActivities();
 	}, []);

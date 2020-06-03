@@ -10,7 +10,7 @@ export default function JoinPage() {
         Our activity membership includes open play, training, events, and organized competition.
       </p>
 
-      <p> players are given tokens & tickets to try out and schedule their own activities</p>
+      <p> players recieve tokens & tickets to try out and schedule their own activities</p>
 
 
     </div>

@@ -58,8 +58,8 @@ export default function NavBar () {
           </NavLink>
         </div>
         <div className='JoinLink'>
-          <NavLink activeClassName='active' to='/events'>
-            <h1 className='Text'>join</h1>
+          <NavLink activeClassName='active' to='/join'>
+            <h1 className='Text'>membership</h1>
           </NavLink>
         </div>
         <div className='PortfolioLink'>

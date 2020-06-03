@@ -6,6 +6,8 @@ import CreateIcon from '../Images/createicon.png'
 import firebase from '../firebase';
 import ActivitiesInfo from './Components/ActivitiesInfo'
 import CreatorsInfo from './Components/CreatorsInfo'
+import LocationsInfo from './Components/LocationsInfo'
+import EventsInfo from './Components/EventsInfo'
 
 export default function HomePage () {
   const history = useHistory()
@@ -27,20 +29,19 @@ export default function HomePage () {
         <img src={TennisEvent} />
       </div>
 
+
+      <div className = "HomeInfo">
       <ActivitiesInfo />
-
       <CreatorsInfo />
-
-
-      <div className = "ActivityMembership">
-      <h2>Locations, Events</h2>
+      <LocationsInfo />
+      <EventsInfo />
       </div>
 
       <div className='CreateActivityButton' onClick={goToCreatePage} >
         <h2>CREATE</h2>
       </div>
-      <div className='CreateActivityButton' onClick={goToJoinPage} >
-        <h2>JOIN </h2>
+      <div className='BecomeMemberButton' onClick={goToJoinPage} >
+        <h2>BECOME A MEMBER </h2>
       </div>
 
     </div>
