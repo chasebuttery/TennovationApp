@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Bellota+Text|Cinzel|Merriweather|Poppins&display=swap');
-@import './scss/fonts.scss';
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC|Bellota+Text|Cinzel|Merriweather|Poppins&display=swap");
+@import "./scss/fonts.scss";
+@import './scss/devices.scss';
+
 
 .App {
   display: grid;
@@ -11,8 +13,15 @@
   overflow-x: hidden;
 }
 
+  
+
+
+h1 {
+  font-family: "Zero Nero";
+}
+
 body {
-  font-family: 'Zero Nero';
+  font-family: "SF Compact";
   //color: black;
   background-color: white;
   margin: 0;

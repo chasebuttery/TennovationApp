@@ -1,16 +1,25 @@
-@import url('https://fonts.googleapis.com/css?family=Changa|Liu+Jian+Mao+Cao|Orbitron|Shadows+Into+Light&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Changa|Liu+Jian+Mao+Cao|Orbitron|Shadows+Into+Light&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Josefin+Slab&family=Poiret+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Josefin+Slab&family=Poiret+One&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap');
 
 // font-family: 'Fredericka the Great', cursive;
 // font-family: 'Josefin Slab', serif;
 // font-family: 'Poiret One', cursive;
 
+@font-face {
+  font-family: "Zero Nero";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Zero Nero"), local("Zero Nero"),
+    url("./zeronero.ttf") format("truetype"); /* Safari, Android, iOS */
+}
 
 @font-face {
-    font-family: 'Zero Nero';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Zero Nero'), local('Zero Nero'),
-      url('./zeronero.ttf') format('truetype'); /* Safari, Android, iOS */
-  }
+  font-family: "SF Compact";
+  font-style: normal;
+  font-weight: 400;
+  src: local("SF Compact"), local("SF Compact"),
+    url("./sfcompact.otf") format("truetype"); /* Safari, Android, iOS */
+}

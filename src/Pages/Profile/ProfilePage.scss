@@ -1,0 +1,84 @@
+@import "../../scss/colors.scss";
+@import "../../scss/fonts.scss";
+@import "../../scss/devices.scss";
+
+.ProfilePage {
+
+
+  .GoogleSignInOut{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+  
+  }
+ .SignIn{
+   margin: 1rem;
+ }
+  .SignIn:hover {
+    background-color: $scienceblue;
+    cursor: pointer;
+  }
+
+  .SignOut {
+   color: $darkerblue;
+   margin: 1rem;
+   
+  }
+
+  .SignOut:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .MemberStatus {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .Warning{
+    color: red;
+  }
+
+  .Currency {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .CheckIcon {
+    height: 3rem;
+    width: auto;
+    margin: 1rem;
+  }
+
+  .Icon {
+    height: 3rem;
+    width: auto;
+  }
+}
+
+
+
+@include desktop{
+
+  .ProfilePage{
+    .Currency {
+      display: flex;
+      flex-direction:row;
+      align-items: center;
+      justify-content: center;
+  .Token{
+    margin: 3rem;
+  }
+  .Ticket{
+    margin: 5rem;
+  }
+    
+  }
+}
+}

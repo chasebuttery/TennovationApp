@@ -1,0 +1,72 @@
+@import "../../scss/colors.scss";
+@import "../../scss/fonts.scss";
+@import "../../scss/devices.scss";
+
+.HomePage {
+  height: 100%;
+  width: 100%;
+  color: $color-primary;
+  display: grid;
+
+  align-items: center;
+  justify-items: center;
+
+  grid-template-columns: 100%;
+
+  grid-template-rows: 10% 15% 60% 15%;
+
+  .Anim {
+    height: 7rem;
+    width: auto;
+    z-index: -2;
+    bottom: 1rem;
+    display: grid;
+    padding-right: 5rem;
+  }
+
+  .Tenno {
+    font-size: 1.8rem;
+    z-index: 5;
+  }
+
+  .Description {
+    color: $greenery;
+  }
+
+  .HomeInfo {
+    display: grid;
+
+    grid-template-rows: 50% 50%;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .MemberButton {
+    width: 96%;
+    height: 90%;
+    color: black;
+    border: black;
+    background-color: $scienceblue;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    margin-top: 5%;
+    border-radius: 5rem;
+
+    .BName {
+      display: grid;
+      align-self: center;
+      justify-self: center;
+      font-family: "Zero Nero";
+      font-size: 1rem;
+    }
+  }
+
+  .MemberButton:hover {
+    background-color: $darkerblue;
+    cursor: pointer;
+  }
+}

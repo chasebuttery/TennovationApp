@@ -1,0 +1,154 @@
+@import "../../scss/colors.scss";
+@import "../../scss/fonts.scss";
+@import "../../scss/devices.scss";
+
+
+
+.CreatePage{
+
+    display: grid;
+     grid-template-columns: 100%;
+     grid-template-rows: 20% 80%;
+
+    height: 100vh;
+    width: 100vw;
+
+    button{
+  //font-family: "Zero Nero";
+
+  background-color: transparent ;
+  border: transparent;
+
+  font-family: 'Coming Soon', cursive;
+  font-size: 1rem;
+}
+
+
+    .Header{
+        display: grid;
+        grid-template-rows: 40% 35% 25%;
+
+
+       
+.AESelect{
+button:hover{
+    //background-color: black;
+    text-decoration: line-through;
+    text-decoration-color: grey;
+}
+
+button:active{
+    text-decoration: line-through;
+
+}
+
+
+.active{
+    text-decoration: line-through;
+
+        
+    
+    }
+    .unactive{
+        text-decoration: none;
+
+    }
+}
+    }
+
+   
+
+.CreateForm{
+
+
+    .Title{
+        .CategorySelect{
+
+        }
+    }
+
+ 
+
+.Form{
+
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 10% 10% 35% 25% 7.5% 7.5%;
+
+
+    .Selects{
+        display: grid;
+        grid-template-columns: repeat(3, 33%);
+        justify-items: start;
+        align-items: center;
+
+        select{
+            width: 5rem;
+        }
+    }
+
+    .ImageUpload{
+        display: grid;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .Details{
+        display: grid;
+        grid-template-columns: 25% 75%;
+        justify-items: center;
+        align-items: center;
+
+        .Time{
+            display: grid;
+            grid-template-rows: 33% 33% 33%;
+
+            height: 100%;
+            width: 100%;
+
+            align-items: center;
+            justify-items: center;
+
+
+                input{
+                    width: 80%;
+                }
+
+                select{
+                    width: 80%;
+                }
+            
+        }
+
+        .Description{
+            height: 100%;
+            width: 100%;
+            display: grid;
+
+            //grid-template-rows: 100%;
+
+            .Info{
+                textarea{
+                    transition: all .3s;
+                    height: 4rem;
+        
+                    &.InfoClosed{
+                        height: 0;
+                        padding: 0;
+                        //border-color: transparent;
+                        visibility: hidden;
+                    }
+                }
+            }
+
+        }
+
+
+    }
+
+
+}
+
+}
+}

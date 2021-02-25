@@ -1,0 +1,56 @@
+@import "../../../scss/colors.scss";
+@import "../../../scss/fonts.scss";
+@import "../../../scss/devices.scss";
+
+
+
+.EventsInfo {
+  box-shadow: 3px 3px 5px 6px #ccc;
+
+  display: grid;
+  grid-template-rows: 35% 25% 40%;
+  align-items: center;
+  width: 96%;
+  height: 90%;
+
+  .InfoTitle {
+    padding-top: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .Types {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    align-items: center;
+    justify-items: center;
+
+    .Event {
+      display: grid;
+      grid-template-rows: 50% 50%;
+      align-items: center;
+      justify-items: center;
+      height: 100%;
+      width: 100%;
+
+      cursor: pointer;
+      .Icon {
+        height: 2rem;
+        width: auto;
+
+        display: grid;
+        align-self: end;
+      }
+      .Name {
+        //margin-bottom: 50%;
+      }
+      .More{
+        color: $darkblue;
+
+
+      }
+      .More:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+}

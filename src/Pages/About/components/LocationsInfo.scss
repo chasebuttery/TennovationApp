@@ -1,0 +1,58 @@
+@import "../../../scss/colors.scss";
+
+.LocationsInfo {
+  box-shadow: 3px 3px 5px 6px #ccc;
+
+  display: grid;
+  grid-template-rows: 35% 25% 40%;
+  align-items: center;
+
+  .InfoTitle {
+    padding-top: 1rem;
+    font-size: 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: $darkerblue;
+    cursor: pointer;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .Icons {
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    align-items: center;
+    justify-items: center;
+
+    .Location {
+      display: grid;
+      grid-template-rows: 50% 50%;
+      align-items: center;
+      justify-items: center;
+      height: 100%;
+      width: 100%;
+      .Icon {
+        height: 5rem;
+        width: auto;
+
+        display: grid;
+        align-self: end;
+      }
+      .Name {
+        //margin-bottom: 50%;
+      }
+      .More{
+        color: $darkblue;
+
+
+      }
+      .More:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+}

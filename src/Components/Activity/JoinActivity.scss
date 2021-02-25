@@ -1,0 +1,35 @@
+
+
+@import "../../scss/colors.scss";
+@import "../../scss/fonts.scss";
+@import "../../scss/devices.scss";
+
+.JoinActivity {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+  justify-items: center;
+
+  button {
+    height: 3rem;
+    width: 5rem;
+    border-radius: 0.5rem;
+    background-color: lightgray;
+    margin: 1rem;
+  }
+
+  .JoinActivityButton{
+background-color: lightgreen;
+  }
+
+  .LeaveActivityButton{
+    background-color: lightsalmon;
+  }
+
+  .JoinActivityButton:hover {
+    background-color: $sciencegreen;
+  }
+  .LeaveActivityButton:hover {
+    background-color:lightcoral;
+  }
+}

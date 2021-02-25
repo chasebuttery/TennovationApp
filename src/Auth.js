@@ -1,5 +1,5 @@
 import firebase from "./firebase";
-import { saveUser } from "./Backend/UserDB/User";
+import { saveUser } from "./Backend/User";
 import ProImg from "./Images/profile.png";
 
 //Rewrite local user saves to only firestore so you can listen for user changes on the navbar and profile page
@@ -23,12 +23,16 @@ export default {
   saveUser(user) {
     console.log(user.photoURL);
     //Save User to DB
-    saveUser(user.displayName);
+
+    saveUser(user);
 
     localStorage.setItem("userName", user.displayName);
     localStorage.setItem("profileImg", user.photoURL);
     localStorage.setItem("idToken", user.id_token);
+    localStorage.setItem("userID", user.uid);
+
     localStorage.setItem("accessToken", user.access_token);
+    localStorage.setItem("member", true);
   },
   saveToken(token) {
     console.log("token = " + token);
@@ -52,6 +56,8 @@ export default {
     const access_token = this.getAccessToken();
     const expires_in = this.getTokenExpiration();
 
+    console.log("there is a user logged in");
+
     if (!id_token || !access_token) {
       return false;
     }
@@ -64,5 +70,5 @@ export default {
     }
 
     return true;
-  }
+  },
 };

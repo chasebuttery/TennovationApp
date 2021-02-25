@@ -1,0 +1,99 @@
+
+@import "../../scss/colors.scss";
+@import "../../scss/fonts.scss";
+@import "../../scss/devices.scss";
+
+
+
+.ActivityPage {
+
+
+
+
+
+.Info{
+  display: grid;
+  grid-template-columns: 33% auto 33%;
+  align-items: center;
+  justify-items: center;
+
+  .Logo{
+    height: 5rem;
+    width: auto;
+  }
+
+
+
+  .Cost{
+    display: flex;
+ flex-direction:row;
+ align-items: center;
+ justify-content: center;
+  }
+  .Icon{
+    height: 2rem;
+    width: auto;
+  }
+}
+
+.People{
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+
+  
+
+
+  .Image {
+    height: auto;
+    width: 100%;
+  }
+
+
+
+  .CreatorImg{
+    height: 3rem;
+    width: auto;
+    border-radius: 50%;
+  }
+
+  .MembersGoingGrid {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    overflow-x: auto;
+
+    .Member {
+      margin: 1rem;
+    }
+  }
+
+  .Results {
+    background-color: $scienceblue;
+    height: 3rem;
+    width: 5rem;
+    border-radius: 0.5rem;
+  }
+
+  .Results:hover{
+
+    background-color: $darkerblue;
+  }
+}
+
+
+
+@include desktop{
+  .ActivityPage{
+
+
+
+    .Image{
+      height: 10rem;
+      width:auto;
+    }
+
+
+
+  }
+}

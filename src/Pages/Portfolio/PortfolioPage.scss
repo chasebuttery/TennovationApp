@@ -1,0 +1,43 @@
+@import "../../scss/colors.scss";
+@import "../../scss/fonts.scss";
+@import "../../scss/devices.scss";
+.PortfolioPage {
+  display: grid;
+  grid-template-rows: 4rem 3rem 4rem 100%;
+  .FindSelect {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 3rem;
+    align-items: center;
+    justify-items: center;
+
+    .Find {
+      margin: 1rem;
+      border-radius: 0.5rem;
+      border-color: darkgray;
+      border-width: thin;
+      width: 6rem;
+      height: 2rem;
+    }
+    .ActiveFind {
+      margin: 1rem;
+      border-radius: 0.5rem;
+      background-color: darkgray;
+      color: black;
+      border-color: darkgray;
+      border-width: thin;
+      width: 6rem;
+
+      height: 2rem;
+    }
+  }
+}
+
+@include desktop {
+  .Portfolio {
+    .PortfolioGrid {
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+  }
+}
