@@ -8,14 +8,15 @@ import AboutPage from "./Pages/About/AboutPage";
 import PortfolioPage from "./Pages/Portfolio/PortfolioPage";
 import CreatePage from "./Pages/Create/CreatePage";
 import MembersPage from "./Pages/Members/Members";
-import ActivtyPage from "./Components/Activity/ActivityPage";
+import ActivityPage from "./Components/Activity/ActivityPage";
 
 export default function Routes() {
   return (
     <div className="routes">
       <Route exact path="/" component={HomePage} />
       <Route exact path="/explore" component={PlayPage} />
-      <Route path="/explore/:activityid" component={ActivtyPage} />
+      <Route path="/explore/activity/:activityid" component={ActivityPage} />
+      <Route path="/explore/filter/:filterString" component={PlayPage} />
       <Route exact path="/profile" component={ProfilePage} />
       <Route exact path="/partners" component={AboutPage} />
 

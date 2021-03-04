@@ -30,9 +30,7 @@ export default function ActivityPage(props) {
   const { activityid } = props.match.params;
   const history = useHistory();
 
-  console.log(activityid);
-
-  console.log(fullActivity);
+   
 
   useEffect(() => {
     async function getFullActivity(activityid) {

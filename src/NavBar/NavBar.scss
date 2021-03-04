@@ -11,21 +11,21 @@
   grid-template-columns: (33% auto 33%);
   grid-template-rows: 100%;
   align-items: center;
-  background: rgb(4, 165, 76);
+  background: white;
   //background: linear-gradient(90deg, rgba(4,165,76,1) 20%, rgba(4,165,76,1) 47%, rgba(255,255,255,0) 80%, rgba(255,255,255,1) 100%);
 
-  box-shadow: 3px 3px 5px 6px #ccc;
   z-index: 100;
 
   a {
     color: black;
     text-decoration: none;
     .LogoIcon {
-      height: 3rem;
+      margin-top: .3rem;
+      height: 1.7rem;
       width: auto;
     }
     .Icon {
-      height: 4rem;
+      height: 2rem;
       width: auto;
     }
   }
@@ -35,12 +35,15 @@
   }
 
   .Expander {
+    display: flex;
+    align-self: center;
+    justify-self: start;
     .ExpandButton {
       outline: none;
       border: none;
       background-color: transparent;
       .ExpandIcon {
-        height: 3rem;
+        height: 1.6rem;
         width: auto;
       }
     }
@@ -56,11 +59,23 @@
     }
   }
 
-  .SecNav {
+.Profile{
+  display: flex;
+  align-self: center;
+  justify-self: flex-end;
+  margin-right: .2rem;
+  .ProfileIcon {
+    border-radius: 50%;
+    height: 1.5rem;
+    width: auto;
+  }
+}
+
+  .Closed{
     display: none;
   }
 
-  .MobileNav {
+  .Expand {
     position: absolute;
     top: 0;
     display: block;
@@ -72,53 +87,48 @@
     align-items: center;
   }
 
-  .ProfileIcon {
-    border-radius: 50%;
-    height: 3rem;
-    width: auto;
-  }
 }
 
-@include desktop {
-  .NavBar {
-    font-size: 0.4rem;
-    display: grid;
-    grid-template-columns: 25% 50% 25%;
-    //grid-template-rows: 100%;
-    a {
-      color: black;
-    }
+// @include desktop {
+//   .NavBar {
+//     font-size: 0.4rem;
+//     display: grid;
+//     grid-template-columns: 25% 50% 25%;
+//     //grid-template-rows: 100%;
+//     a {
+//       color: black;
+//     }
 
-    .Expander {
-      display: none;
-    }
+//     .Expander {
+//       display: none;
+//     }
 
-    .MainNav {
-    }
+//     .MainNav {
+//     }
 
-    .SecNav {
-      display: block;
-      display: grid;
-      grid-template-columns: 25% 25% 25% 25%;
-      grid-template-rows: 100%;
-      position: relative;
-      height: 100%;
-      width: 100%;
-      align-items: center;
-    }
+//     .SecNav {
+//       display: block;
+//       display: grid;
+//       grid-template-columns: 25% 25% 25% 25%;
+//       grid-template-rows: 100%;
+//       position: relative;
+//       height: 100%;
+//       width: 100%;
+//       align-items: center;
+//     }
 
-    .MobileNav {
-      display: block;
-      display: grid;
-      grid-template-columns: 25% 25% 25% 25%;
-      grid-template-rows: 100%;
-      position: relative;
-      height: 100%;
-      width: 100%;
-      top: unset;
-      bottom: unset;
-      z-index: 0;
-      background-color: unset;
-    }
-  }
-}
+//     .MobileNav {
+//       display: block;
+//       display: grid;
+//       grid-template-columns: 25% 25% 25% 25%;
+//       grid-template-rows: 100%;
+//       position: relative;
+//       height: 100%;
+//       width: 100%;
+//       top: unset;
+//       bottom: unset;
+//       z-index: 0;
+//       background-color: unset;
+//     }
+//   }
+// }

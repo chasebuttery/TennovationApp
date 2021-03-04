@@ -10,7 +10,7 @@ import Auth from "../Auth";
 import firebase from "../firebase";
 
 export default function NavBar() {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [profileIcon, setProfileIcon] = useState();
 
   const location = useLocation();
@@ -55,6 +55,7 @@ export default function NavBar() {
           <img className="ExpandIcon" src={NavMenu} />
         </button>
       </div>
+      
       <div className="MainNav">
         <div className="LogoLink">
           <NavLink to="/">
@@ -62,8 +63,14 @@ export default function NavBar() {
           </NavLink>
         </div>
       </div>
+      <div className="Profile">
+        <NavLink activeClassName="active" to="/profile">
+          <img className="ProfileIcon" src={profileIcon} />
+        </NavLink>
+      </div>
+
       <div
-        className={isExpanded ? "SecNav" : "MobileNav"}
+        className={isExpanded ? "Expand" : "Closed"}
         onClick={expandNavbar}
       >
         <div className="PlayLink">
@@ -86,11 +93,6 @@ export default function NavBar() {
             <h1 className="Text">partners</h1>
           </NavLink>
         </div>
-      </div>
-      <div className="ProfileLink">
-        <NavLink activeClassName="active" to="/profile">
-          <img className="ProfileIcon" src={profileIcon} />
-        </NavLink>
       </div>
     </div>
   );

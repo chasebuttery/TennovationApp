@@ -1,193 +1,159 @@
 import React, { useState, useEffect, Component } from "react";
-import { NavLink } from "react-router-dom";
-
+import { NavLink} from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import Calendar from "react-calendar";
-
 import ActivityCard from "../../Components/Activity/ActivityCard";
-
 import Icon from "../../Images/golf.png";
 import CalendarButton from "../../Images/call.png";
 import {
   getActivityList,
   getActivitiesByAll,
 } from "../../Backend/ActivitiesDB";
-//import {}
 import "./PlayPage.scss";
 import "react-calendar/dist/Calendar.css";
 
-export default function PlayPage() {
+export default function PlayPage(props) {
   const [activities, setActivities] = useState([]);
-  const [activityOptions, setActivityOptions] = useState({
-    type: "activity/event",
-    typeMap: ["any", "activity", "event", "tournament", "party", "meeting"],
-    categoryMap: ["any", "learn", "play", "train", "compete"],
+  const [newFilterString, setNewFilterString] = useState("ms");
+  const [tennis, setTennis] = useState(false);
+  const [filterOptions, setFilterOptions] = useState({
+    tennis: false,
+    basketball: false,
+    golf: false,
+    other: false,
+    monday: false,
+    tuesday: false,
+    wednesday: false,
+    thursday:false,
+    friday:false,
+    saturday: false,
+    sunday:false
 
-    sportMap: ["all", "tennis", "basketball", "golf", "drone flying", "other"],
-    costMap: ["select cost", "0", "1", "2", "3", "other"],
-    locationMap: [
-      "select location",
-      "KTC Quail",
-      "Hollinger",
-      "Sugar Valley",
-      "Bellbrook Golf Range",
-      "other",
-    ],
-    dayMap: [
-      "select day",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday",
-    ],
-    weekMap: ["this week", "next week", "future"],
-    coachMap: [
-      "select coach",
-      "Chase Buttery",
-      "Matt Redden",
-      "Alex Fryman",
-      "Ryan Remaly",
-    ],
   });
-  const [category, setCategory] = useState("");
+ const [loading, setLoading] = useState(false);
 
-  const [openCalendar, setOpenCalendar] = useState(false);
 
-  const [week, setWeek] = useState("");
-  const [type, setType] = useState("");
-
-  const [date, setDate] = useState(new Date());
-
-  const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-
-  const [day, setDay] = useState(getTheDay());
-
-  function getTheDay() {
-    const dow = new Date().getDay();
-
-    if (dow === 1) {
-      return "Monday";
-    } else if (dow === 2) {
-      return "Tuesday";
-    } else if (dow === 3) {
-      return "Wednesday";
-    } else if (dow === 4) {
-      return "Thursday";
-    } else if (dow === 5) {
-      return "Friday";
-    } else if (dow === 6) {
-      return "Saturday";
-    } else {
-      return "Sunday";
-    }
-  }
-  function setTheDay(dow) {
-    console.log(dow, "wahthtt");
-    if (dow === 1) {
-      setDay("Monday");
-    } else if (dow === 2) {
-      setDay("Tuesday");
-    } else if (dow === 3) {
-      setDay("Wednesday");
-    } else if (dow === 4) {
-      setDay("Thursday");
-    } else if (dow === 5) {
-      setDay("Friday");
-    } else if (dow === 6) {
-      setDay("Saturday");
-    } else {
-      setDay("Sunday");
-    }
-  }
+  // const history = useHistory();
+  // const location = useLocation();
+  
 
   useEffect(() => {
-    async function getActivitiesBy(dow) {
-      const list = await getActivitiesByAll(day);
+    async function getActivitiesBy() {
+      setLoading(true)
+      const list = await getActivitiesByAll(filterOptions);
       setActivities(list.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }
-    getActivitiesBy(day);
-  }, [day]);
+    getActivitiesBy();
+    setLoading(false)
+    //getActivitiesBy(filterOptions);
+  }, [ filterOptions]);
+  //check to see if sport,day, type, time have changed.  If so run the get activities function and start load.  Then after set activities stop the load
 
-  console.log(activities);
+  //change sport, change day, change type, change group size
 
-  function handleCategorySelect(e) {
-    const categoryValue = e.target.value;
-    setCategory(categoryValue);
+
+
+
+
+  function toggleFilter(e){
+    let value = e.target.value
+    let checked = e.target.checked
+
+    //console.log("========!!!!!!!!!!", checked);
+
+      setFilterOptions((curFilter) => {
+        return{
+          ...curFilter,
+          [value]: checked
+      }
+        })
   }
 
-  function handleWeekSelect(e) {
-    const weekValue = e.target.value;
-    setWeek(weekValue);
-  }
+  console.log("FILLLTTTT", filterOptions);
+  
 
-  function handleTypeSelect(e) {
-    const typeValue = e.target.value;
-    setType(typeValue);
-  }
 
-  function onDayChange(date) {
-    setDate(date);
-    setOpenCalendar(false);
 
-    setTheDay(date.getDay());
+  // function goToFilteredPage(value, checked ) {
 
-    console.log(date, "WHAT ISITITIAGOHASVAHHAHAHA");
-  }
+  //   // console.log("LOCA", value, checked, filterString);
+  //   if(value && checked){
+  //     if(filterString){
+  //   setNewFilterString(filterString + value)
+  //     }else{
+  //       setNewFilterString(value)
+  //     }
+    
+  //   }
+  //   else if(!checked){
+  //     if(filterString){
+  //     let newString = filterString;
+  //     newString.replace(value, '')
+  //     setNewFilterString(newString);
+  //     }
+  //   }
+  // }
 
-  console.log(date.toLocaleDateString("en-US", dateOptions), "DATEEEEEE", day);
+  //   goTo(newFilterString);
+    
+
+
+  //   //history.push("/explore/filter/" + newFilterString);
+
+  // }
+
+  // function goTo(newFilterString){
+  //    history.push("/explore/filter/" + newFilterString);
+  // }
+
+  //console.log("TENNIS", tennis, "FILTER =======", filterString, filterOptions);
+
+    
 
   return (
     <div className="PlayPage">
       <div className="Header">
-        <h1>Explore</h1>
-        <p>Find new activities and events near you.</p>
+        <h1>Activities</h1>
       </div>
-      <div className="FilterOptions">
-        <div>
-          <img
-            className="CalendarButton"
-            onClick={(e) => {
-              setOpenCalendar(!openCalendar);
-            }}
-            src={CalendarButton}
-          />
-        </div>
-        <h3
-          className="Day"
-          onClick={(e) => {
-            setOpenCalendar(!openCalendar);
-          }}
-        >
-          {date.toLocaleDateString("en-US", dateOptions)}
-        </h3>
-        <div className="Select">
-          <select
-            className="SelectType"
-            onChange={handleTypeSelect}
-            value={type}
-          >
-            {activityOptions.categoryMap?.map((type) => {
-              return (
-                <option value={type} key={type}>
-                  {type}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-      </div>
-      {openCalendar === true && (
-        <Calendar className="Calendar" onChange={onDayChange} value={date} />
-      )}
 
+      <div className = "Play">
+      <div className="ActivityFilter">
+        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
+        <label>Tennis</label>
+        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
+        <label>Tennis</label>
+        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
+        <label>Tennis</label>
+
+
+
+        <input checked = {filterOptions.monday} onChange = {toggleFilter} value = "monday" type= "checkbox" />
+        <label>Tennis</label>
+        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
+        <label>Tennis</label>
+        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
+        <label>Tennis</label>
+        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
+        <label>Tennis</label>
+        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
+        <label>Tennis</label>
+        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
+        <label>Tennis</label>
+        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
+        <label>Tennis</label>
+        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
+        <label>Tennis</label>
+      </div>
+        
       <div className="PlayGrid">
-        {activities.map((activity) => (
-          <div>
+        { !loading ? activities.map((activity) => (
+          <div key = {activity}>
             <ActivityCard key={activity.id} activity={activity} />
-          </div>
-        ))}
+          </div >
+        )) :
+          "n/a"
+        }
+      </div>
       </div>
     </div>
   );

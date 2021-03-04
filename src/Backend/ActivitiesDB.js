@@ -58,18 +58,27 @@ export async function getActivitiesCreatedBy(userName) {
   return activityData;
 }
 
-export async function getActivitiesByAll(day) {
-  console.log("day", day);
+export async function getActivitiesByAll(filterOptions) {
+  //console.log("day", day);
+  var query = firebase.firestore().collection("Activities")
+    console.log("FIAGKAKHA");
 
-  const activityData = firebase
-    .firestore()
-    .collection("Activities")
-    .where("day", "==", day)
-    .get()
-    .catch(function(error) {
-      console.log("Error getting documents: ", error);
-    });
-  return activityData;
+    for (var filterVar of Object.keys(filterOptions)) {
+      console.log(filterVar + " -> " + filterOptions[filterVar])
+
+      if(filterOptions[filterVar]){
+        query = query.where(filterVar, "==", true)
+        
+    console.log("AFGHAHASDGquery", query);
+      }
+    }
+
+    const activityData = query.get()
+      .catch(function(error) {
+        console.log("Error getting documents: ", error);
+      });
+      return activityData;
+  
 }
 
 export async function getMembersList(activityID) {

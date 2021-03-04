@@ -26,7 +26,7 @@ export default function ActivityCard(props) {
   const history = useHistory();
 
   function goToActivityPage() {
-    history.push("./explore/" + activity.activityID);
+    history.push("./explore/activity" + activity.activityID);
   }
 
   useEffect(() => {
@@ -40,22 +40,17 @@ export default function ActivityCard(props) {
   }, [activity]);
 
   function refreshMembersGoing(member) {
-    console.log(member);
-    console.log(members);
-    console.log("LIST" + members.length);
-    console.log(!members.includes(member));
+   
     //console.log('ADDINGGGG');
     //fruits.find(fruit => fruit.name === 'apples');
     let isMemberIn = members.find((memb) => memb.name === member.name);
-    console.log(isMemberIn);
+   
     if (isMemberIn == null) {
-      console.log("ADDINGGGG");
       setMembers([...members, member]);
     }
   }
 
   function refreshMembersNotGoing(memberData) {
-    console.log("LEAVING ACTIVITY" + memberData.name);
     let filteredMembers = members.filter(
       (member) => member.name != memberData.name
     );
@@ -94,7 +89,6 @@ export default function ActivityCard(props) {
         // Insert url into an <img> tag to "download"
         setImg(url);
         setShowImg(true);
-        console.log("in");
       })
       .catch(function(error) {
         // A full list of error codes is available at
@@ -104,7 +98,6 @@ export default function ActivityCard(props) {
 
   downloadImg();
 
-  console.log("activity card values", activity);
 
   return (
     <div className="ActivityCard">
@@ -162,8 +155,8 @@ export default function ActivityCard(props) {
           <div className="Members">
             <div className="MembersGoingGrid">
               {members.map((member) => (
-                <div>
-                  <Member member={member} />
+                <div key = {member}>
+                  <Member  member={member} />
                 </div>
               ))}
             </div>
