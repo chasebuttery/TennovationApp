@@ -1,5 +1,3 @@
-
-
 @import "../../scss/colors.scss";
 @import "../../scss/fonts.scss";
 @import "../../scss/devices.scss";
@@ -10,26 +8,36 @@
   align-items: center;
   justify-items: center;
 
-  button {
-    height: 3rem;
-    width: 5rem;
-    border-radius: 0.5rem;
-    background-color: lightgray;
-    margin: 1rem;
+  // button {
+  //   height: 3rem;
+  //   width: 5rem;
+  //   border-radius: 0.5rem;
+  //   background-color: lightgray;
+  //   margin: 1rem;
+  // }
+
+  .Fab {
+    transform: scale(0.6);
+    color: $sciencegreen;
+    background-color: $greenery;
+
+    ::hover {
+      background-color: red;
+    }
   }
 
-  .JoinActivityButton{
-background-color: lightgreen;
-  }
+  // .JoinActivityButton {
+  //   background-color: lightgreen;
+  // }
 
-  .LeaveActivityButton{
-    background-color: lightsalmon;
-  }
+  // .LeaveActivityButton {
+  //   background-color: lightsalmon;
+  // }
 
-  .JoinActivityButton:hover {
-    background-color: $sciencegreen;
-  }
-  .LeaveActivityButton:hover {
-    background-color:lightcoral;
-  }
+  // .JoinActivityButton:hover {
+  //   background-color: $sciencegreen;
+  // }
+  // .LeaveActivityButton:hover {
+  //   background-color: lightcoral;
+  // }
 }

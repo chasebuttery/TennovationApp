@@ -1,0 +1,55 @@
+@import "../../../scss/colors.scss";
+@import "../../../scss/fonts.scss";
+@import "../../../scss/devices.scss";
+
+
+
+
+.ActivityFilter{
+    display: grid;
+    margin-top: 2rem;
+
+    .Sport{
+       margin:1rem;
+
+    }
+
+    .Day{
+        margin: 1rem;
+    }
+
+    .FilterOption{
+        align-items: center;
+        justify-items: left;
+        margin: 0rem;
+        height: 1.5rem;
+
+        .Checkbox{
+            color: $teslalight;
+            transform: scale(.6);
+        }
+
+        .Radio{
+            color: $tesladark;
+            transform: scale(.8);
+            
+        }
+        label{
+                font-size: .7rem;
+            }
+
+    }
+
+
+
+    // input[type="checkbox"]{
+    //     color: red;
+    //     width: 2rem;
+    //     ::checked{
+    //         color: blue;
+    //     }
+    // }
+
+
+
+}

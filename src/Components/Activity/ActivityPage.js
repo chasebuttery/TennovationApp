@@ -69,61 +69,12 @@ export default function ActivityPage(props) {
     setMembers(filteredMembers);
   }
 
-  // function saveImg(event) {
-  //   let file = event.target.files[0];
-
-  //   // Create a root reference
-  //   var storageRef = firebase.storage().ref();
-
-  //   // // Create a reference to 'mountains.jpg'
-  //   var activityImgRef = storageRef.child("mainimg.jpg");
-
-  //   activityImgRef.put(file).then(function(snapshot) {
-  //     console.log("Uploaded a blob or file!");
-  //   });
-  // }
-
-  // function saveVid(event) {
-  //   let file = event.target.files[0];
-
-  //   // Create a root reference
-  //   var storageRef = firebase.storage().ref();
-
-  //   // // Create a reference to 'mountains.jpg'
-  //   var activityVidRef = storageRef.child("mainvid.mp4");
-
-  //   activityVidRef.put(file).then(function(snapshot) {
-  //     console.log("Uploaded a blob or file!");
-  //   });
-  // }
-
-  // function downloadImg(event) {
-  //   // Create a reference to the file we want to download
-  //   var storageRef = firebase.storage().ref();
-  //   const main = "mainimg";
-  //   var starsRef = storageRef.child(main + ".jpg");
-  //   console.log("getting vidd");
-
-  //   // Get the download URL
-  //   const imgUrl = starsRef
-  //     .getDownloadURL()
-  //     .then(function(url) {
-  //       // Insert url into an <img> tag to "download"
-  //       setImg(url);
-  //       setShowImg(true);
-  //     })
-  //     .catch(function(error) {
-  //       // A full list of error codes is available at
-  //     });
-
-  //   console.log(img);
-  // }
 
   function downloadImg() {
     // Create a reference to the file we want to download
     var storageRef = firebase.storage().ref();
 
-    var starsRef = storageRef.child("images/" + fullActivity.imgID + ".jpg");
+    var starsRef = storageRef.child("images/" + fullActivity?.imgID + ".jpg");
     //console.log('getting img')
 
     // Get the download URL
@@ -166,7 +117,7 @@ export default function ActivityPage(props) {
 
   return (
     <div className="ActivityPage">
-      <h1 className="ActivityHeader">{fullActivity.title}</h1>
+      <h1 className="ActivityHeader">{fullActivity?.title}</h1>
 
       <div className = "Info">
         <div className = "What">

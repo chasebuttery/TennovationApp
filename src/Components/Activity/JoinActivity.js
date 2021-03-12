@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
+import AddIcon from "@material-ui/icons/Add";
+import EditIcon from "@material-ui/icons/Edit";
+import { Fab } from "@material-ui/core";
 import "./JoinActivity.scss";
 import {
   addUserToActivity,
@@ -48,12 +51,18 @@ export default function JoinActivity(props) {
 
   return (
     <div className="JoinActivity">
-      <button className="JoinActivityButton" type="submit" onClick={addMember}>
+      {/* <button className="JoinActivityButton" type="submit" onClick={addMember}>
         I'M IN
       </button>
       <button className="LeaveActivityButton" onClick={deleteMember}>
         I'M OUT
-      </button>
+      </button> */}
+      <div className="Join">
+        <label>Join</label>
+        <Fab className="Fab" color="primary" aria-label="add">
+          <AddIcon className="Add" />
+        </Fab>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import moment from "moment";
 import "./ActivityCard.scss";
 import firebase from "../../firebase";
 import { addUserToActivity } from "../../Backend/ActivitiesDB";
@@ -19,6 +20,11 @@ export default function ActivityCard(props) {
   const [members, setMembers] = useState([]);
   const [expanded, setExpanded] = useState(true);
 
+  var moment1 = moment(activity?.time.toDate(), "DD-MM-YYYY hh:mm:ss");
+  var moment2 = moment();
+
+  var diff = moment2.diff(moment1, "days");
+
   const [img, setImg] = useState("");
 
   const [showImg, setShowImg] = useState(false);
@@ -26,7 +32,12 @@ export default function ActivityCard(props) {
   const history = useHistory();
 
   function goToActivityPage() {
-    history.push("./explore/activity" + activity.activityID);
+    // history.push("./explore/activity/" + activity.activityID);
+    const win = window.open(
+      "/explore/activity/" + activity.activityID,
+      "_blank"
+    );
+    win.focus();
   }
 
   useEffect(() => {
@@ -40,11 +51,8 @@ export default function ActivityCard(props) {
   }, [activity]);
 
   function refreshMembersGoing(member) {
-   
-    //console.log('ADDINGGGG');
-    //fruits.find(fruit => fruit.name === 'apples');
     let isMemberIn = members.find((memb) => memb.name === member.name);
-   
+
     if (isMemberIn == null) {
       setMembers([...members, member]);
     }
@@ -56,24 +64,6 @@ export default function ActivityCard(props) {
     );
     setMembers(filteredMembers);
   }
-
-  function expandActivity() {
-    setExpanded(!expanded);
-
-    //GO TO FULL ACTIVITY PAGE
-
-    // <NavLink  className to = {'./play/' + activity.activityID} >
-  }
-
-  //   function joinActivity() {
-  //     console.log("joining activity");
-  //     addUserToActivity(activity.activityID);
-  //   }
-
-  //Test Members Going Array
-  //   members.map(member => {
-  //     console.log("member..." + member.name);
-  //   });
 
   function downloadImg() {
     // Create a reference to the file we want to download
@@ -96,76 +86,41 @@ export default function ActivityCard(props) {
       });
   }
 
-  downloadImg();
+  console.log("TIIIIIMMMMEEe", activity?.time.toDate());
 
+  console.log(moment2, moment1, "TOJEAOGJAOGDIFFFFF FF======");
+
+  console.log(diff, "oiafhoghaoghaoigh");
+
+  function getTimeRemaining() {
+    if (-diff > 1) {
+      return diff + "d";
+    } else {
+      return 10 + "h";
+    }
+  }
+
+  downloadImg();
 
   return (
     <div className="ActivityCard">
-      <div className="ActivityCardInner">
-        <div className="ActivityCardFront">
-          {showImg && (
-            <div className="ActivityContainer">
-              <img className="Image" src={img} />
-            </div>
-          )}
-          <div className="MobileSub">
-            <h3 className="Title">{activity.title}</h3>
-            <div className="More" onClick={goToActivityPage}>
-              <img className="Icon" src={MoreIcon} />
-              <p>More</p>
-            </div>
-          </div>
-        </div>
+      <h3 className="Title">{activity.title}</h3>
 
-        <div className="ActivityCardBack">
-          <div className="Top">
-            <div className="Sport">
-              <img className="Icon" src={Sport} />
-            </div>
-            <div>
-              {activity.location === "KTC/Quail" ? (
-                <img className="KTC" src={Ktc} />
-              ) : <p>{activity.location}</p>}
-            </div>
-            <div className="Cost">
-              <img className="Token" src={Token} />
-              <h2 className="Amount ">{activity.cost}</h2>
-            </div>
-          </div>
-          <h2 className="Title">{activity.title}</h2>
+      <p> {getTimeRemaining()} </p>
 
+      <div className="ActivityContainer">
+        <img className="Image" src={img} />
+      </div>
+      <div className="JoinOptions">
+        <JoinActivity
+          activityID={activity.activityID}
+          onSubmit={refreshMembersGoing}
+          onLeave={refreshMembersNotGoing}
+        />
+      </div>
 
-          {showImg && <img className="Image" src={img} />}
-          {/* <div className="Location">
-            <img className="Kettering" src={Kettering} />
-          </div> */}
-          <div className="Time">
-            <p>{activity.time}</p>
-          </div>
-
-          <h4 className="Description">{activity.description}</h4>
-
-          <div className="JoinOptions">
-            <JoinActivity
-              activityID={activity.activityID}
-              onSubmit={refreshMembersGoing}
-              onLeave={refreshMembersNotGoing}
-            />
-          </div>
-          <div className="Members">
-            <div className="MembersGoingGrid">
-              {members.map((member) => (
-                <div key = {member}>
-                  <Member  member={member} />
-                </div>
-              ))}
-            </div>
-            <div className="More" onClick={goToActivityPage}>
-              <img className="Icon" src={MoreIcon} />
-              <p>More</p>.
-            </div>
-          </div>
-        </div>
+      <div className="More" onClick={goToActivityPage}>
+        <p>More</p>
       </div>
     </div>
   );

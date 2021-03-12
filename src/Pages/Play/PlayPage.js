@@ -1,35 +1,17 @@
 import React, { useState, useEffect, Component } from "react";
-import { NavLink} from "react-router-dom";
-import { useHistory, useLocation } from "react-router-dom";
-import Calendar from "react-calendar";
 import ActivityCard from "../../Components/Activity/ActivityCard";
-import Icon from "../../Images/golf.png";
-import CalendarButton from "../../Images/call.png";
 import {
-  getActivityList,
-  getActivitiesByAll,
+  getActivitiesByAll
 } from "../../Backend/ActivitiesDB";
+import anim from "../../Images/tennanim.mp4";
 import "./PlayPage.scss";
 import "react-calendar/dist/Calendar.css";
+import ActivityFilter from './components/ActivityFilter'
 
 export default function PlayPage(props) {
   const [activities, setActivities] = useState([]);
-  const [newFilterString, setNewFilterString] = useState("ms");
-  const [tennis, setTennis] = useState(false);
-  const [filterOptions, setFilterOptions] = useState({
-    tennis: false,
-    basketball: false,
-    golf: false,
-    other: false,
-    monday: false,
-    tuesday: false,
-    wednesday: false,
-    thursday:false,
-    friday:false,
-    saturday: false,
-    sunday:false
-
-  });
+  const [filter, setFilter] = useState({})
+ 
  const [loading, setLoading] = useState(false);
 
 
@@ -40,75 +22,26 @@ export default function PlayPage(props) {
   useEffect(() => {
     async function getActivitiesBy() {
       setLoading(true)
-      const list = await getActivitiesByAll(filterOptions);
+      const list = await getActivitiesByAll(filter);
       setActivities(list.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setLoading(false)
     }
     getActivitiesBy();
-    setLoading(false)
+    
     //getActivitiesBy(filterOptions);
-  }, [ filterOptions]);
-  //check to see if sport,day, type, time have changed.  If so run the get activities function and start load.  Then after set activities stop the load
-
-  //change sport, change day, change type, change group size
+  }, [ filter]);
 
 
+  function updateFilter(filterOptions){
 
+    //console.log("5555555555555", filterOptions);
+  
+    setFilter(filterOptions)
 
-
-  function toggleFilter(e){
-    let value = e.target.value
-    let checked = e.target.checked
-
-    //console.log("========!!!!!!!!!!", checked);
-
-      setFilterOptions((curFilter) => {
-        return{
-          ...curFilter,
-          [value]: checked
-      }
-        })
   }
 
-  console.log("FILLLTTTT", filterOptions);
+
   
-
-
-
-  // function goToFilteredPage(value, checked ) {
-
-  //   // console.log("LOCA", value, checked, filterString);
-  //   if(value && checked){
-  //     if(filterString){
-  //   setNewFilterString(filterString + value)
-  //     }else{
-  //       setNewFilterString(value)
-  //     }
-    
-  //   }
-  //   else if(!checked){
-  //     if(filterString){
-  //     let newString = filterString;
-  //     newString.replace(value, '')
-  //     setNewFilterString(newString);
-  //     }
-  //   }
-  // }
-
-  //   goTo(newFilterString);
-    
-
-
-  //   //history.push("/explore/filter/" + newFilterString);
-
-  // }
-
-  // function goTo(newFilterString){
-  //    history.push("/explore/filter/" + newFilterString);
-  // }
-
-  //console.log("TENNIS", tennis, "FILTER =======", filterString, filterOptions);
-
-    
 
   return (
     <div className="PlayPage">
@@ -117,33 +50,9 @@ export default function PlayPage(props) {
       </div>
 
       <div className = "Play">
-      <div className="ActivityFilter">
-        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
-        <label>Tennis</label>
-        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
-        <label>Tennis</label>
-        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
-        <label>Tennis</label>
-
-
-
-        <input checked = {filterOptions.monday} onChange = {toggleFilter} value = "monday" type= "checkbox" />
-        <label>Tennis</label>
-        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
-        <label>Tennis</label>
-        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
-        <label>Tennis</label>
-        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
-        <label>Tennis</label>
-        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
-        <label>Tennis</label>
-        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
-        <label>Tennis</label>
-        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
-        <label>Tennis</label>
-        <input checked = {filterOptions.tennis} onChange = {toggleFilter} value = "tennis" type= "checkbox" />
-        <label>Tennis</label>
-      </div>
+        <div className = "Filter">
+           <ActivityFilter updateFilter = {updateFilter} />
+        </div>
         
       <div className="PlayGrid">
         { !loading ? activities.map((activity) => (
@@ -151,7 +60,12 @@ export default function PlayPage(props) {
             <ActivityCard key={activity.id} activity={activity} />
           </div >
         )) :
-          "n/a"
+            <div className = "Loading">
+            {/* <video className="Anim" autoPlay loop muted playsInline>
+                <source src={anim} type="video/mp4" />
+            </video> */}
+            Loading
+            </div>
         }
       </div>
       </div>
