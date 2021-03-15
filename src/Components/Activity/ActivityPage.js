@@ -14,7 +14,7 @@ import firebase from "../../firebase";
 import Token from "../../Images/token.png";
 import Ktc from "../../Images/ktc.png";
 import Tennis from "../../Images/tennis.png";
-import Hollinger from '../../Images/holl.png'
+import Hollinger from "../../Images/holl.png";
 
 export default function ActivityPage(props) {
   const [fullActivity, setFullActivity] = useState({});
@@ -29,8 +29,6 @@ export default function ActivityPage(props) {
 
   const { activityid } = props.match.params;
   const history = useHistory();
-
-   
 
   useEffect(() => {
     async function getFullActivity(activityid) {
@@ -68,7 +66,6 @@ export default function ActivityPage(props) {
     );
     setMembers(filteredMembers);
   }
-
 
   function downloadImg() {
     // Create a reference to the file we want to download
@@ -119,27 +116,32 @@ export default function ActivityPage(props) {
     <div className="ActivityPage">
       <h1 className="ActivityHeader">{fullActivity?.title}</h1>
 
-      <div className = "Info">
-        <div className = "What">
-      {fullActivity?.sport === 'tennis' ? <img className = "Icon" src = {Tennis} /> : <p>fullActivity.sport</p>}
+      <div className="Info">
+        <div className="What">
+          {fullActivity?.sport === "tennis" ? (
+            <img className="Icon" src={Tennis} />
+          ) : (
+            <p>fullActivity.sport</p>
+          )}
+        </div>
+        <div className="Where">
+          {fullActivity.location === "Hollinger" ? (
+            <img className="Logo" src={Hollinger} />
+          ) : (
+            <p>{fullActivity.location}</p>
+          )}
+        </div>
+        <div className="Cost">
+          <p>{fullActivity.cost}</p>
+          <img className="Icon" src={Token} />
+        </div>
       </div>
-<div className = "Where" >
-      {fullActivity.location === "Hollinger" ? <img className="Logo" src = {Hollinger} /> : 
-      <p>{fullActivity.location}</p>}
-      </div>
-      <div className = "Cost">
-      <p>{fullActivity.cost}</p>
-      <img className = "Icon" src = {Token} />
-      </div>
-      </div>
-
-
 
       {showImg && <img className="Image" src={img} />}
 
-      <p>{fullActivity.time}</p>
+      {/* <p>{fullActivity?.time}</p> */}
 
-      <p>{fullActivity.description}</p>
+      <p>{fullActivity?.description}</p>
 
       <JoinActivity
         activityID={fullActivity.activityID}
@@ -147,23 +149,23 @@ export default function ActivityPage(props) {
         onLeave={refreshMembersNotGoing}
       />
 
-<div className = "People">
-<div className = "CoachInfo">
-<p>Coach:</p>
-      <img className = "CreatorImg" src = {fullActivity.creatorImage} />
-<p> {fullActivity.creatorID}</p>
-</div>
+      <div className="People">
+        <div className="CoachInfo">
+          <p>Coach:</p>
+          <img className="CreatorImg" src={fullActivity.creatorImage} />
+          <p> {fullActivity.creatorID}</p>
+        </div>
 
-<div className = "MembersInfo">
-      <p>Members Going:</p>
-      <div className="MembersGoingGrid">
-        {members.map((member) => (
-          <div>
-            <Member member={member} />
+        <div className="MembersInfo">
+          <p>Members Going:</p>
+          <div className="MembersGoingGrid">
+            {members.map((member) => (
+              <div>
+                <Member member={member} />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      </div>
+        </div>
       </div>
 
       <button

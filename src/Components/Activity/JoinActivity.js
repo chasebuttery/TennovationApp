@@ -24,7 +24,6 @@ export default function JoinActivity(props) {
   console.log("props" + props);
 
   //const [ membersGoingList ] = useState(getMembersGoingList(activityID) );
-
   function passMemberToParent(member) {
     console.log("DATA " + member.name);
     props.onSubmit(member);

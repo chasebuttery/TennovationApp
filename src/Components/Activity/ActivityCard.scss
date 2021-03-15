@@ -5,21 +5,92 @@
 
 
 .ActivityCard{
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  
+  display: grid;
+  grid-template-rows: 20% 40% 20% 20%;
+  background-color: white;
+  border-radius: .5rem;
+  height: 20rem;
+  width: 16rem;
+  margin: .5rem;
+
   @include mobile{
-    width: 100%;
+    height: 36rem;
+    width: 92vw;
   }
 
-  height: 24rem;
-  width: 20rem;
+  .Header{
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1rem .8rem .4rem;
+    align-items: center;
+    justify-items: start;
+    margin: .5rem;
+
+    .Title{
+      font-size: .8rem;
+    }
+    .Title2{
+      font-size: .8rem;
+      justify-self: end;
+    }
+
+    .Timer{
+      padding: 0;
+      height: 1.2rem;
+      width: auto;
+      justify-self: end;
+    }
+
+    .Info{
+      font-size: .6rem;
+    }
+    .Info2{
+      font-size: .6rem;
+      justify-self: end;
+    }
+
+    .Detail{
+      font-size: .5rem;
+    }
+    .Detail2{
+      font-size: .5rem;
+      justify-self: end;
+    }
+
+
+
+
+    
+  }
+
+  .ImageContainer{
+    display: grid;
+    justify-self: center;
 
   .Image{
-    height: 10rem;
-    width: 16rem;
+    
+    height: 8rem;
+    width: auto;
   }
+}
+
+
+  .Highlights{
+    display: grid;
+    grid-template-columns: 33% auto 33%;
+    grid-template-rows: 2rem 1.6rem;
+   
+    justify-items: center;
+
+    h4{
+      font-size: .8rem;
+    }
+    p{
+      font-size: .5rem;
+    }
+  }
+
 
 
 

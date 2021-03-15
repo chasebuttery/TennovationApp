@@ -1,7 +1,9 @@
 import React, { useState, useEffect, Component } from "react";
 import "./ActivityFilter.scss";
 import "react-calendar/dist/Calendar.css";
+import moment from "moment";
 import { Checkbox,Radio } from "@material-ui/core";
+import { weekdays } from "moment";
 
 
 export default function ActivityFilter(props) {
@@ -17,8 +19,12 @@ export default function ActivityFilter(props) {
     friday: false,
     saturday: false,
     sunday: false,
-    groupSize: 0,
   });
+
+ 
+
+
+  
 
   const { updateFilter } = props;
 
@@ -173,6 +179,21 @@ export default function ActivityFilter(props) {
         />
         <label>Sunday</label>
       </div>
+
+      <div className = "Week">
+    <label>Week </label>
+     <div className = "FilterOption" >
+       <Checkbox
+        value="current"
+        className = "Checkbox"
+        checked={false}
+        color = "default"
+        inputProps={{ 'aria-label': 'primary checkbox' }}
+      />
+      <label>This Week </label>
+      </div>
+      </div>
+
       </div>
     </div>
   );

@@ -73,6 +73,12 @@ export async function getActivitiesByAll(filterOptions) {
       }
     }
 
+    //TIMESTAMP WHERE
+    // query.where(time, >, timestamp1).where(time, >, timestamp2)
+    //firebase.firestore().collection("cities").where("timestamp", ">", timestamp);
+
+
+
     const activityData = query.get()
       .catch(function(error) {
         console.log("Error getting documents: ", error);
@@ -80,6 +86,9 @@ export async function getActivitiesByAll(filterOptions) {
       return activityData;
   
 }
+
+
+
 
 export async function getMembersList(activityID) {
   const members = firebase

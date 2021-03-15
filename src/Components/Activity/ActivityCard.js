@@ -9,7 +9,7 @@ import Member from "../Member/Member";
 import "./ActivityCard.scss";
 import JoinActivity from "./JoinActivity";
 import { NavLink } from "react-router-dom";
-import Token from "../../Images/token.png";
+import timer from "../../Images/timer.jpg";
 import Ktc from "../../Images/ktc.png";
 import Sport from "../../Images/tennis.png";
 
@@ -18,12 +18,14 @@ import MoreIcon from "../../Images/Go.png";
 export default function ActivityCard(props) {
   const { activity } = props;
   const [members, setMembers] = useState([]);
-  const [expanded, setExpanded] = useState(true);
+
 
   var moment1 = moment(activity?.time.toDate(), "DD-MM-YYYY hh:mm:ss");
   var moment2 = moment();
 
   var diff = moment2.diff(moment1, "days");
+  var diff2 = moment2.diff(moment1, "hours");
+  var diff3 = moment2.diff(moment1, "minutes");
 
   const [img, setImg] = useState("");
 
@@ -94,9 +96,13 @@ export default function ActivityCard(props) {
 
   function getTimeRemaining() {
     if (-diff > 1) {
-      return diff + "d";
-    } else {
-      return 10 + "h";
+      return -diff + "d";
+    }
+    else if(-diff2 < 24 && -diff2 > 1){
+      return -diff2 + "h";
+    } 
+    else if(-diff2 <=  1) {
+      return -diff3 + "m";
     }
   }
 
@@ -104,24 +110,43 @@ export default function ActivityCard(props) {
 
   return (
     <div className="ActivityCard">
-      <h3 className="Title">{activity.title}</h3>
 
-      <p> {getTimeRemaining()} </p>
+      <div className = "Header">
+      <h4 className="Title">{activity.title}</h4>
+      <img className="Timer" src={timer} />
+     
+      <p className = "Info"> {getTimeRemaining()} </p>
+      <p className = "Info2"> {getTimeRemaining()} </p>
+    
+      <p className = "Detail">spots left</p>
+      <p className = "Detail2 ">M, 830-10</p>
 
-      <div className="ActivityContainer">
+      </div>
+
+      <div className="ImageContainer">
         <img className="Image" src={img} />
       </div>
-      <div className="JoinOptions">
+
+      <div className="Highlights" >
+
+        <h4>Tennis </h4>
+        <h4>Practice </h4>
+        <h4>Tennis </h4>
+
+        <p>Stats</p>
+        <p>Stats</p>
+        <p>Stats</p>
+      </div>
+
+      <div className="Options">
         <JoinActivity
           activityID={activity.activityID}
           onSubmit={refreshMembersGoing}
           onLeave={refreshMembersNotGoing}
         />
+        <p onClick={goToActivityPage}>More </p>
       </div>
 
-      <div className="More" onClick={goToActivityPage}>
-        <p>More</p>
-      </div>
     </div>
   );
 }
