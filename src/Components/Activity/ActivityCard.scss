@@ -2,104 +2,103 @@
 @import "../../scss/fonts.scss";
 @import "../../scss/devices.scss";
 
-
-
-.ActivityCard{
+.ActivityCard {
   display: grid;
   grid-template-rows: 20% 40% 20% 20%;
   background-color: white;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   height: 20rem;
   width: 16rem;
-  margin: .5rem;
+  margin: 0.5rem;
 
-  @include mobile{
+  @include mobile {
     height: 36rem;
     width: 92vw;
   }
 
-  .Header{
-
+  .CardHeader {
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 1rem .8rem .4rem;
+    grid-template-rows: 1rem 0.8rem 0.4rem;
     align-items: center;
     justify-items: start;
-    margin: .5rem;
+    margin: 0.5rem;
 
-    .Title{
-      font-size: .8rem;
+    .Title {
+      font-size: 0.8rem;
     }
-    .Title2{
-      font-size: .8rem;
+    .Title2 {
+      font-size: 0.8rem;
       justify-self: end;
     }
 
-    .Timer{
+    .Timer {
       padding: 0;
       height: 1.2rem;
       width: auto;
       justify-self: end;
     }
 
-    .Info{
-      font-size: .6rem;
+    .Info {
+      font-size: 0.6rem;
     }
-    .Info2{
-      font-size: .6rem;
+    .Info2 {
+      font-size: 0.6rem;
       justify-self: end;
     }
 
-    .Detail{
-      font-size: .5rem;
+    .Detail {
+      font-size: 0.5rem;
     }
-    .Detail2{
-      font-size: .5rem;
+    .Detail2 {
+      font-size: 0.5rem;
       justify-self: end;
     }
-
-
-
-
-    
   }
 
-  .ImageContainer{
+  .ImageContainer {
     display: grid;
     justify-self: center;
 
-  .Image{
-    
-    height: 8rem;
-    width: auto;
+    .Image {
+      height: 8rem;
+      width: auto;
+    }
   }
-}
 
-
-  .Highlights{
+  .Highlights {
     display: grid;
     grid-template-columns: 33% auto 33%;
     grid-template-rows: 2rem 1.6rem;
-   
+
     justify-items: center;
 
-    h4{
-      font-size: .8rem;
+    h4 {
+      font-size: 0.8rem;
     }
-    p{
-      font-size: .5rem;
+    p {
+      font-size: 0.5rem;
     }
   }
 
+  .Options {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    justify-items: center;
 
-
-
+    .MoreFab {
+      display: grid;
+      width: 8rem;
+      transform: scale(0.8);
+      background-color: $color-blue;
+      color: white;
+      &:hover {
+        background-color: $scienceblue;
+      }
+    }
+  }
 }
-
-
-
-
-
 
 // @include mobile {
 //   .ActivityCard {
@@ -150,13 +149,12 @@
 //   align-items: center;
 // color: $darkblue;
 
-
 // }
 
 // .More:hover{
 //   cursor: pointer;
 //   text-decoration: underline;
-  
+
 // }
 
 // @include desktop {
@@ -205,8 +203,6 @@
 //     width: 100%;
 //     display: grid;
 //     grid-template-rows: 80% 20%;
-
-  
 
 //     .MobileSub {
 //       // display: grid;
@@ -269,15 +265,12 @@
 //       position: unset;
 //     }
 
-   
-
 //     .Members{
 //       display: grid;
 //       grid-template-columns: 80% 20%;
 //       justify-items: center;
 //       align-items: center;
 
-    
 //       .MembersGoingGrid {
 //         display: grid;
 //         grid-template-columns: repeat(24, 1fr);
@@ -288,8 +281,6 @@
 //         }
 //       }
 
-
-     
 //     }
 //   }
 // }

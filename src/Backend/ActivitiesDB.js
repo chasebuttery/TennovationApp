@@ -31,7 +31,9 @@ export async function getActivityData(activityID) {
 }
 
 export async function getActivitiesJoinedBy(userName) {
-  console.log("Function Needs to Be Done after Members going is converted into an array of member usernames on FIRST LEVEL OF DB");
+  console.log(
+    "Function Needs to Be Done after Members going is converted into an array of member usernames on FIRST LEVEL OF DB"
+  );
 
   const activityData = firebase
     .firestore()
@@ -60,35 +62,28 @@ export async function getActivitiesCreatedBy(userName) {
 
 export async function getActivitiesByAll(filterOptions) {
   //console.log("day", day);
-  var query = firebase.firestore().collection("Activities")
-    console.log("FIAGKAKHA");
+  var query = firebase.firestore().collection("Activities");
+  console.log("FIAGKAKHA");
 
-    for (var filterVar of Object.keys(filterOptions)) {
-      console.log(filterVar + " -> " + filterOptions[filterVar])
+  for (var filterVar of Object.keys(filterOptions)) {
+    console.log(filterVar + " -> " + filterOptions[filterVar]);
 
-      if(filterOptions[filterVar]){
-        query = query.where(filterVar, "==", true)
-        
-    console.log("AFGHAHASDGquery", query);
-      }
+    if (filterOptions[filterVar]) {
+      query = query.where(filterVar, "==", true);
+
+      console.log("AFGHAHASDGquery", query);
     }
+  }
 
-    //TIMESTAMP WHERE
-    // query.where(time, >, timestamp1).where(time, >, timestamp2)
-    //firebase.firestore().collection("cities").where("timestamp", ">", timestamp);
+  //TIMESTAMP WHERE
+  // query.where(time, >, timestamp1d).where(time, >, timestamp2)
+  //firebase.firestore().collection("cities").where("timestamp", ">", timestamp);
 
-
-
-    const activityData = query.get()
-      .catch(function(error) {
-        console.log("Error getting documents: ", error);
-      });
-      return activityData;
-  
+  const activityData = query.get().catch(function(error) {
+    console.log("Error getting documents: ", error);
+  });
+  return activityData;
 }
-
-
-
 
 export async function getMembersList(activityID) {
   const members = firebase
@@ -184,6 +179,7 @@ export async function addActivity(
 export async function addUserToActivity(activityID) {
   const userName = Auth.getUserName();
   const profileImg = Auth.getProfileImg();
+  const id = Auth.getUserID();
 
   console.log("put user in firestore");
   const activities = firebase
@@ -195,6 +191,7 @@ export async function addUserToActivity(activityID) {
     .set({
       name: userName,
       profileImg: profileImg,
+      id: id,
     });
   return activities;
 }

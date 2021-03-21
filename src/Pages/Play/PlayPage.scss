@@ -3,49 +3,64 @@
 @import "../../scss/devices.scss";
 
 .PlayPage {
-display: grid;
-grid-template-rows: 4rem auto;
-text-align: left;
-h1{
-  margin: 1rem;
-}
-
-
-
-.Play{
   display: grid;
-  grid-template-columns: 12rem auto;
-  background-color: $teslagray;
-
-  @include mobile{
-
-      grid-template-columns: 100%;
-
-    .ActivityFilter{
-      display: none;
-   }
-
+  grid-template-rows: 4rem auto;
+  text-align: left;
+  h1 {
+    margin: 1rem;
   }
 
-}
+  .Play {
+    display: grid;
+    grid-template-columns: 12rem auto;
+    background-color: $teslagray;
 
-.ActivityFilter{
-  display: flex;
-  flex-direction: column;
-}
+    .SearchField {
+      transform: scale(0.6);
+      color: black;
+    }
 
-.PlayGrid{
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  margin-top: 3rem;
-  padding: 0;
-  justify-content: center;
-  width: 100%;
-}
+    @include mobile {
+      grid-template-columns: 100%;
 
+      .ActivityFilter {
+        display: none;
+      }
+    }
+  }
 
+  .Header {
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    .Slider {
+      transform: scale(0.6);
+      color: black;
+    }
+
+    .Wallet {
+      img {
+        height: 2rem;
+        width: auto;
+      }
+    }
+  }
+
+  .ActivityFilter {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .PlayGrid {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    margin-top: 3rem;
+    padding: 0;
+    justify-content: center;
+    width: 100%;
+  }
 }
 //   display: grid;
 //   grid-template-columns: 2rem auto;
@@ -64,7 +79,7 @@ h1{
 //       height: 5rem;
 //       width: auto;
 //       cursor: pointer;
-      
+
 //     }
 
 //     .Day {

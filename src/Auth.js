@@ -13,6 +13,10 @@ export default {
     return localStorage.getItem("userName");
   },
 
+  getUserID() {
+    return localStorage.getItem("userID");
+  },
+
   saveUserData() {
     // const user = firebase.auth().currentUser;
     // const profileImg = user.photoURL;

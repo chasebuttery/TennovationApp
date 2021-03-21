@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import AddIcon from "@material-ui/icons/Add";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 import EditIcon from "@material-ui/icons/Edit";
+
+import tokenIcon from "../../Images/token.png";
 import { Fab } from "@material-ui/core";
 import "./JoinActivity.scss";
 import {
@@ -13,11 +17,12 @@ import Member from "../Member/Member";
 import Auth from "../../Auth";
 
 export default function JoinActivity(props) {
-  const { activityID } = props;
+  const { activityID, inActivity } = props;
   // const { members } = props.members;
   const [member, setMember] = useState({
     name: Auth.getUserName() || "",
-    profileImg: Auth.getProfileImg(),
+    id: Auth.getUserID || "",
+    profileImg: Auth.getProfileImg() || "",
   });
 
   const history = useHistory();
@@ -48,20 +53,27 @@ export default function JoinActivity(props) {
     props.onLeave(member);
   }
 
+  console.log("FAIGAINGAGINNNNNNN", inActivity);
+
   return (
     <div className="JoinActivity">
-      {/* <button className="JoinActivityButton" type="submit" onClick={addMember}>
-        I'M IN
-      </button>
-      <button className="LeaveActivityButton" onClick={deleteMember}>
-        I'M OUT
-      </button> */}
-      <div className="Join">
-        <label>Join</label>
-        <Fab className="Fab" color="primary" aria-label="add">
-          <AddIcon className="Add" />
-        </Fab>
-      </div>
+      {inActivity ? (
+        <>
+          <Fab>
+            <RemoveCircleIcon className="Remove" />
+          </Fab>
+        </>
+      ) : (
+        <>
+          <Fab onClick={addMember} className="JoinFab" variant="extended">
+            <strong> 1 </strong>
+            <img className="Token" src={tokenIcon} />
+            <strong>JOIN</strong>
+            {/* <AddCircleOutlineIcon className="Add" /> */}
+            {/* <RemoveCircleIcon className="Remove" />  */}
+          </Fab>
+        </>
+      )}
     </div>
   );
 }

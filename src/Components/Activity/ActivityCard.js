@@ -4,6 +4,8 @@ import moment from "moment";
 import "./ActivityCard.scss";
 import firebase from "../../firebase";
 import { addUserToActivity } from "../../Backend/ActivitiesDB";
+
+import { Fab } from "@material-ui/core";
 import { getMembersGoingList } from "../../Backend/ActivitiesDB";
 import Member from "../Member/Member";
 import "./ActivityCard.scss";
@@ -13,12 +15,19 @@ import timer from "../../Images/timer.jpg";
 import Ktc from "../../Images/ktc.png";
 import Sport from "../../Images/tennis.png";
 
+import Auth from "../../Auth";
 import MoreIcon from "../../Images/Go.png";
 
 export default function ActivityCard(props) {
   const { activity } = props;
   const [members, setMembers] = useState([]);
+  const [isInActivity, setIsInActivity] = useState(false);
 
+  const [member, setMember] = useState({
+    name: Auth.getUserName() || "",
+    id: Auth.getUserID() || "",
+    profileImg: Auth.getProfileImg(),
+  });
 
   var moment1 = moment(activity?.time.toDate(), "DD-MM-YYYY hh:mm:ss");
   var moment2 = moment();
@@ -42,30 +51,17 @@ export default function ActivityCard(props) {
     win.focus();
   }
 
-  useEffect(() => {
-    async function getMembersGoing(activity) {
-      const membersList = await getMembersGoingList(activity.activityID);
-      setMembers(
-        membersList.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-      );
-    }
-    getMembersGoing(activity);
-  }, [activity]);
-
-  function refreshMembersGoing(member) {
-    let isMemberIn = members.find((memb) => memb.name === member.name);
-
-    if (isMemberIn == null) {
-      setMembers([...members, member]);
-    }
+  function inActivity() {
+    members.forEach((personGoing) => {
+      if ((personGoing.id = member.id)) {
+        setIsInActivity(true);
+      }
+    });
   }
 
-  function refreshMembersNotGoing(memberData) {
-    let filteredMembers = members.filter(
-      (member) => member.name != memberData.name
-    );
-    setMembers(filteredMembers);
-  }
+  console.log("MEMEMMMMMMMMMM", members);
+
+  useEffect(inActivity, []);
 
   function downloadImg() {
     // Create a reference to the file we want to download
@@ -88,6 +84,23 @@ export default function ActivityCard(props) {
       });
   }
 
+  function refreshMembersGoing(member) {
+    let isMemberIn = members.find((memb) => memb.name === member.name);
+    console.log(isMemberIn);
+    if (isMemberIn == null) {
+      console.log("ADDINGGGG");
+      setMembers([...members, member]);
+    }
+  }
+
+  function refreshMembersNotGoing(memberData) {
+    console.log("LEAVING ACTIVITY" + memberData.name);
+    let filteredMembers = members.filter(
+      (member) => member.name != memberData.name
+    );
+    setMembers(filteredMembers);
+  }
+
   console.log("TIIIIIMMMMEEe", activity?.time.toDate());
 
   console.log(moment2, moment1, "TOJEAOGJAOGDIFFFFF FF======");
@@ -97,11 +110,9 @@ export default function ActivityCard(props) {
   function getTimeRemaining() {
     if (-diff > 1) {
       return -diff + "d";
-    }
-    else if(-diff2 < 24 && -diff2 > 1){
+    } else if (-diff2 < 24 && -diff2 > 1) {
       return -diff2 + "h";
-    } 
-    else if(-diff2 <=  1) {
+    } else if (-diff2 <= 1) {
       return -diff3 + "m";
     }
   }
@@ -110,25 +121,22 @@ export default function ActivityCard(props) {
 
   return (
     <div className="ActivityCard">
+      <div className="CardHeader">
+        <h4 className="Title">{activity.title}</h4>
+        <img className="Timer" src={timer} />
 
-      <div className = "Header">
-      <h4 className="Title">{activity.title}</h4>
-      <img className="Timer" src={timer} />
-     
-      <p className = "Info"> {getTimeRemaining()} </p>
-      <p className = "Info2"> {getTimeRemaining()} </p>
-    
-      <p className = "Detail">spots left</p>
-      <p className = "Detail2 ">M, 830-10</p>
+        <p className="Info"> {getTimeRemaining()} </p>
+        <p className="Info2"> {getTimeRemaining()} </p>
 
+        <p className="Detail">spots left</p>
+        <p className="Detail2 ">M, 830-10</p>
       </div>
 
       <div className="ImageContainer">
         <img className="Image" src={img} />
       </div>
 
-      <div className="Highlights" >
-
+      <div className="Highlights">
         <h4>Tennis </h4>
         <h4>Practice </h4>
         <h4>Tennis </h4>
@@ -139,14 +147,21 @@ export default function ActivityCard(props) {
       </div>
 
       <div className="Options">
+        <Fab
+          onClick={goToActivityPage}
+          className="MoreFab"
+          variant="extended"
+          color="primary"
+        >
+          <strong>MORE INFO</strong>
+        </Fab>
         <JoinActivity
           activityID={activity.activityID}
           onSubmit={refreshMembersGoing}
           onLeave={refreshMembersNotGoing}
+          inActivity={isInActivity}
         />
-        <p onClick={goToActivityPage}>More </p>
       </div>
-
     </div>
   );
 }
