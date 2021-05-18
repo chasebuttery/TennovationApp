@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import "./NavBar.scss";
 import Logo from "../Images/tvthick.png";
 import NavMenu from "../Images/nav.png";
+import CloseIcon from '@material-ui/icons/Close';
 import Portfolio from "../Images/portfolio.png";
 //import Schedule from "../Images/Schedule.jpeg";
 import Auth from "../Auth";
@@ -73,6 +74,7 @@ export default function NavBar() {
         className={isExpanded ? "Expand" : "Closed"}
         onClick={expandNavbar}
       >
+        <CloseIcon color = "default" />
         <div className="PlayLink">
           <NavLink activeClassName="active" to="/explore">
             <h1 className="Text">explore</h1>
@@ -80,7 +82,7 @@ export default function NavBar() {
         </div>
         <div className="PortfolioLink">
           <NavLink to="/portfolio">
-            <h1 className="Text">activity portfolio</h1>
+            <h1 className="Text">my portfolio</h1>
           </NavLink>
         </div>
         <div className="MembersLink">
@@ -90,7 +92,7 @@ export default function NavBar() {
         </div>
         <div className="AboutLink">
           <NavLink activeClassName="active" to="/partners">
-            <h1 className="Text">partners</h1>
+            <h1 className="Text">about</h1>
           </NavLink>
         </div>
       </div>

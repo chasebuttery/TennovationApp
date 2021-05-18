@@ -13,7 +13,7 @@ import ActivityPage from "./Components/Activity/ActivityPage";
 export default function Routes() {
   return (
     <div className="routes">
-      <Route exact path="/" component={HomePage} />
+      <Route exact path="/" component={PlayPage} />
       <Route exact path="/explore" component={PlayPage} />
       <Route path="/explore/activity/:activityid" component={ActivityPage} />
       <Route path="/explore/filter/:filterString" component={PlayPage} />

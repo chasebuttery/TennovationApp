@@ -4,54 +4,70 @@
 
 .ActivityCard {
   display: grid;
-  grid-template-rows: 20% 40% 20% 20%;
+  grid-template-rows: 25% 35% 20% 20%;
   background-color: white;
   border-radius: 0.5rem;
-  height: 20rem;
-  width: 16rem;
-  margin: 0.5rem;
+  height: 28rem;
+  width: 24rem;
+  margin: 1rem;
+  padding: .5rem;
 
   @include mobile {
-    height: 36rem;
-    width: 92vw;
+    // height: 36rem;
+    // width: 90%
+    width: 100%;
+    align-self: center;
+    justify-self: center;
+
   }
 
   .CardHeader {
     display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 1rem 0.8rem 0.4rem;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 2rem 1.5rem 1rem;
     align-items: center;
     justify-items: start;
     margin: 0.5rem;
 
     .Title {
-      font-size: 0.8rem;
+      font-size: 1.3rem;
     }
     .Title2 {
-      font-size: 0.8rem;
+      font-size: 1rem;
       justify-self: end;
     }
 
     .Timer {
       padding: 0;
-      height: 1.2rem;
+      height: 1.5rem;
       width: auto;
       justify-self: end;
     }
 
+    .Progress{
+      padding: 0;
+      justify-self: flex-end;
+      margin-top: 1rem;
+
+
+      .Circle{
+        color: red;
+      }
+    }
+
     .Info {
-      font-size: 0.6rem;
+      font-size: 1rem;
     }
     .Info2 {
-      font-size: 0.6rem;
+      font-size: 1rem;
       justify-self: end;
     }
 
     .Detail {
-      font-size: 0.5rem;
+      font-size: .8rem;
     }
     .Detail2 {
-      font-size: 0.5rem;
+      font-size: 0.8rem;
       justify-self: end;
     }
   }
@@ -69,15 +85,15 @@
   .Highlights {
     display: grid;
     grid-template-columns: 33% auto 33%;
-    grid-template-rows: 2rem 1.6rem;
+    grid-template-rows: 2.5rem 2rem;
 
     justify-items: center;
 
     h4 {
-      font-size: 0.8rem;
+      font-size: 1.2rem;
     }
     p {
-      font-size: 0.5rem;
+      font-size: 0.8rem;
     }
   }
 
@@ -89,8 +105,8 @@
 
     .MoreFab {
       display: grid;
-      width: 8rem;
-      transform: scale(0.8);
+      width: 10rem;
+      //transform: scale(1.2);
       background-color: $color-blue;
       color: white;
       &:hover {

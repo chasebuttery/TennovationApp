@@ -12,6 +12,7 @@
   grid-template-rows: 100%;
   align-items: center;
   background: white;
+  //margin: 1rem;
   //background: linear-gradient(90deg, rgba(4,165,76,1) 20%, rgba(4,165,76,1) 47%, rgba(255,255,255,0) 80%, rgba(255,255,255,1) 100%);
 
   z-index: 100;
@@ -20,8 +21,7 @@
     color: black;
     text-decoration: none;
     .LogoIcon {
-      margin-top: .3rem;
-      height: 1.7rem;
+      height: 2.2rem;
       width: auto;
     }
     .Icon {
@@ -43,7 +43,8 @@
       border: none;
       background-color: transparent;
       .ExpandIcon {
-        height: 1.6rem;
+        margin-left: 1rem;
+        height: 2rem;
         width: auto;
       }
     }
@@ -63,10 +64,10 @@
   display: flex;
   align-self: center;
   justify-self: flex-end;
-  margin-right: .2rem;
   .ProfileIcon {
     border-radius: 50%;
-    height: 1.5rem;
+    margin-right: 1rem;
+    height: 2rem;
     width: auto;
   }
 }
@@ -81,10 +82,18 @@
     display: block;
     z-index: 999;
     background-color: $greenery;
-    width: 100%;
+    width: 20%;
     height: 100%;
     display: grid;
     align-items: center;
+
+
+    @include mobile {
+      
+      width: 100%;
+      
+
+    }
   }
 
 }

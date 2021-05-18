@@ -4,7 +4,7 @@
 
 .PlayPage {
   display: grid;
-  grid-template-rows: 4rem auto;
+  grid-template-rows: 4rem auto auto;
   text-align: left;
   h1 {
     margin: 1rem;
@@ -15,6 +15,27 @@
     grid-template-columns: 12rem auto;
     background-color: $teslagray;
 
+    .Filter{
+      //background-color: white;
+      padding: .5rem;
+      @include mobile {
+        
+          display: none;
+
+      }
+
+      .FilterMobile{
+        display: block;
+        position: absolute;
+        top: 0;
+        display: block;
+        z-index: 999;
+        height: 100%;
+        width: 100%;
+      }
+
+
+
     .SearchField {
       //transform: scale(0.6);
       align-self: center;
@@ -22,28 +43,108 @@
       color: black;
       margin: 1rem 0 0 1rem;
       width: 8rem;
+      @include mobile {
+        
+        width: 90%;
+
+      }
+
+
+
     }
+  }
 
     @include mobile {
-      grid-template-columns: 100%;
+      grid-template-columns: 90%;
+      align-items: center;
+      justify-items: center;
 
       .ActivityFilter {
         display: none;
+
       }
     }
   }
 
+
+.SubHeader{
+display: grid;
+background-color: $teslagray;
+grid-template-columns: 50% 50%;
+align-items: start;
+//justify-items: start;
+
+.Timer{
+  
+  height: 3rem;
+  margin-left: 1.5rem;
+  align-self: center;
+  justify-self: center;
+  .TimeString{
+    font-size: 1.2rem;
+   
+  }
+}
+
+  .FilterButton{
+    display: none;
+
+    @include mobile {
+      align-self: center;
+      justify-self: center;
+      display: block;
+
+      .Button{
+        //margin-top: .5rem;
+        transform: scale(1.2);;
+      }
+      }
+
+  }
+}
+
   .Header {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 80% 10% 10%;
+    align-items: center;
+
+
+    @include mobile {
+      
+      .Sorter{
+        display: none;
+      }
+      
+
+    }
+    
+
 
     .Slider {
       //transform: scale(0.6);
       color: black;
     }
+.Sorter{
+    // background-color: $teslagray;
+    // border-radius: 1.5rem;
+    // padding: .5rem;
+    .SortBy{
+      display: flex;
+      justify-self: end;
+      margin: .2rem;
+      text-decoration: none;
+      color: black;
+      transform: scale(.8);
+    }
+  }
 
     .Wallet {
+      display: flex;
+      //align-self: flex-end;
+      align-items: center;
+      justify-self: end;
       img {
+        margin-right: 1rem;
         height: 2rem;
         width: auto;
       }
@@ -55,15 +156,19 @@
     flex-direction: column;
   }
 
+  
+
   .PlayGrid {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
     margin: 0;
-    margin-top: 1rem;
+    margin-top: 0rem;
     padding: 0;
     justify-content: center;
     width: 100%;
+       
+    
   }
 }
 //   display: grid;

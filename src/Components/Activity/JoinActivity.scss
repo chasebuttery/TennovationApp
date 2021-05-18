@@ -5,9 +5,9 @@
 .JoinActivity {
   .JoinFab {
     display: flex;
-    width: 8rem;
+    width: 10rem;
     flex-direction: column;
-    transform: scale(0.8);
+    //transform: scale(0.8);
     color: white;
     background-color: $greenery;
     &:hover {

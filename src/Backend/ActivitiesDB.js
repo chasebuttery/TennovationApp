@@ -60,6 +60,28 @@ export async function getActivitiesCreatedBy(userName) {
   return activityData;
 }
 
+
+
+
+export async function getActiveActivities() {
+  //console.log("day", day);
+  var query = firebase.firestore().collection("Activities");
+  console.log("FIAGKAKHA");
+  var time = new Date();
+
+  query = query.where("time", "<=", time);
+
+
+  const activityData = query.get().catch(function(error) {
+    console.log("Error getting documents: ", error);
+  });
+  return activityData;
+}
+
+
+
+
+
 export async function getActivitiesByAll(filterOptions) {
   //console.log("day", day);
   var query = firebase.firestore().collection("Activities");

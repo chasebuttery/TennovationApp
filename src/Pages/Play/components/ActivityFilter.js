@@ -2,7 +2,7 @@ import React, { useState, useEffect, Component } from "react";
 import "./ActivityFilter.scss";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
-import { Checkbox,Radio } from "@material-ui/core";
+import { Checkbox,Radio, Button } from "@material-ui/core";
 import { weekdays } from "moment";
 
 
@@ -45,9 +45,8 @@ export default function ActivityFilter(props) {
   }
 
   return (
-    <div className="ActivityFilter">
-
-
+  <>
+      <div className="ActivityFilter">
 
     <div className = "Sport">
     <label>Sport </label>
@@ -83,6 +82,28 @@ export default function ActivityFilter(props) {
           type="checkbox"
         />
         <label>Basketball</label>
+      </div>
+      <div className = "FilterOption" >
+       <Checkbox
+        value="tennis"
+        className = "Checkbox"
+        checked={filterOptions.tennis}
+        onChange={toggleFilter}
+        color = "default"
+        inputProps={{ 'aria-label': 'primary checkbox' }}
+      />
+      <label>Baseball </label>
+      </div>
+      <div className = "FilterOption" >
+       <Checkbox
+        value="tennis"
+        className = "Checkbox"
+        checked={filterOptions.tennis}
+        onChange={toggleFilter}
+        color = "default"
+        inputProps={{ 'aria-label': 'primary checkbox' }}
+      />
+      <label>Soccer </label>
       </div>
       <div className="FilterOption">
         <Checkbox
@@ -181,7 +202,7 @@ export default function ActivityFilter(props) {
       </div>
 
       <div className = "Week">
-    <label>Week </label>
+    <label>Type </label>
      <div className = "FilterOption" >
        <Checkbox
         value="current"
@@ -190,11 +211,42 @@ export default function ActivityFilter(props) {
         color = "default"
         inputProps={{ 'aria-label': 'primary checkbox' }}
       />
-      <label>This Week </label>
+      <label>Learn </label>
+      </div>
+      <div className = "FilterOption" >
+       <Checkbox
+        value="current"
+        className = "Checkbox"
+        checked={false}
+        color = "default"
+        inputProps={{ 'aria-label': 'primary checkbox' }}
+      />
+      <label>Play </label>
+      </div>
+      <div className = "FilterOption" >
+       <Checkbox
+        value="current"
+        className = "Checkbox"
+        checked={false}
+        color = "default"
+        inputProps={{ 'aria-label': 'primary checkbox' }}
+      />
+      <label>Create </label>
+      </div>
+      <div className = "FilterOption" >
+       <Checkbox
+        value="current"
+        className = "Checkbox"
+        checked={false}
+        color = "default"
+        inputProps={{ 'aria-label': 'primary checkbox' }}
+      />
+      <label>Compete </label>
       </div>
       </div>
 
       </div>
     </div>
+    </>
   );
 }
