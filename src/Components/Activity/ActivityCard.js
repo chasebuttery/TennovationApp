@@ -38,6 +38,8 @@ export default function ActivityCard(props) {
 
   const [img, setImg] = useState("");
 
+  const [vid, setVid] = useState("");
+
   const [showImg, setShowImg] = useState(false);
 
   const history = useHistory();
@@ -83,6 +85,26 @@ export default function ActivityCard(props) {
         //console.log("ig not downloaded")
       });
   }
+  
+  function getVideo() {
+    // Create a reference to the file we want to download
+    var storageRef = firebase.storage().ref();
+
+    var starsRef = storageRef.child("videos/" + activity?.vidUrl);
+    //console.log('getting img')
+
+    // Get the download URL
+    const vidUrl = starsRef
+      .getDownloadURL()
+      .then(function(url) {
+        // Insert url into an <img> tag to "download"
+        setVid(url);
+      })
+      .catch(function(error) {
+        // A full list of error codes is available at
+        //console.log("ig not downloaded")
+      });
+  }
 
   function refreshMembersGoing(member) {
     let isMemberIn = members.find((memb) => memb.name === member.name);
@@ -103,47 +125,36 @@ export default function ActivityCard(props) {
   
 
   downloadImg();
+  getVideo();
 
   var progress = 10;
 
   return (
-    <div className="ActivityCard">
-      <div className="CardHeader">
-        <h4 className="Title">{activity.title}</h4>
+    <div className="ActivityCard" onClick = {goToActivityPage}>
+
+      <div className = "VideoContainer">
+          <video src = {vid}  muted autoPlay loop/>
+      </div>
+
+      <div className="Header">
+        <div className = "Main">
+             {/* <h4 className="Title">{activity.title}</h4>
+              */}
+              <Typography className = "Title" variant = "h2" >Tennis Class</Typography>
+         
+              <Typography className = "Info" variant = "body1" >Tennis Class</Typography>
         {/* <img className="Timer" src={timer} /> */}
+        </div>
         <div className = "Progress">
         <StopWatch activityTime = {activity?.time}/>
         </div>
-        <p className="Info">KTC/Quail Tennis Center </p>
-        <p className="Info2">  </p>
-
-        <p className="Detail">Monday 830-10pm </p>
-        <strong className="Detail2 ">4 spots left</strong>
       </div>
 
-      <div className="ImageContainer">
-        <img className="Image" src={img} />
-      </div>
 
+      <div className="Footer">
       <div className="Highlights">
-        <h4>Tennis </h4>
-        <h4>Practice </h4>
-        <h4>20/24 </h4>
-
-        <p>Stats</p>
-        <p>Type</p>
-        <p>Group Size</p>
+        <p> Tennis : Group Size : 24/28 people : Competition : 6-730pm : 3 weeks left </p>
       </div>
-
-      <div className="Options">
-        <Fab
-          onClick={goToActivityPage}
-          className="MoreFab"
-          variant="extended"
-          color="primary"
-        >
-          <strong>MORE INFO</strong>
-        </Fab>
         <JoinActivity
           activityID={activity.activityID}
           onSubmit={refreshMembersGoing}
@@ -151,6 +162,7 @@ export default function ActivityCard(props) {
           inActivity={isInActivity}
         />
       </div>
+
     </div>
   );
 }
