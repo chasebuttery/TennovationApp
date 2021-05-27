@@ -4,8 +4,8 @@
 
 .ActivityCard {
   display: grid;
-  grid-template-rows: 50% 25% 25%;
-  height: 36em;
+  grid-template-rows: 60% 25% 15%;
+  height: 32em;
   width: 32em;
   background-color: white;
   margin: 1em;
@@ -14,54 +14,80 @@
   border-radius: 1em;
   cursor: pointer;
 
- 
-.Header{
-  display: grid;
-  grid-template-columns: 75% 25%;
+  &:hover {
+    border-color: black;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 2px 3px grey;
+  }
 
-  width: 100%;
-
-  .Main{
+  .ActivityHeader {
     display: grid;
-    justify-self: start;
-    grid-template-rows: 75% 25%;
-    margin-left: 1em;
-    .Title{
-      color: blue;
-      font-size: 2em;
-    }
-    .Info{
+    grid-template-columns: 60% 20% 20%;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
 
+    .Main {
+      display: grid;
+      justify-self: start;
+      grid-template-rows: 50% 25% 25%;
+      height: 100%;
+      //margin-left: 1em;
+      margin: 0 0 0 1em;
+      .Title {
+        color: black;
+        font-size: 1.5em;
+      }
+      .Info {
+        color: #171a20;
+      }
+    }
+    .TimerContainer {
+      display: grid;
+      justify-self: end;
+      // .Timer {
+      //   transform: scale(2.6);
+      // }
+    }
+    .BookmarkContainer {
+      display: grid;
+      align-self: start;
+      margin-top: 1em;
+      .Bookmark {
+        transform: scale(2.4);
+      }
     }
   }
-  .Progress{
+
+  .Footer {
     display: grid;
-    justify-self: end;
+    width: 100%;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    justify-items: center;
+
+    .MoreContainer {
+      .MoreButton {
+        background-color: $color-blue;
+        height: 3rem;
+        width: 14rem;
+        //transform: scale(0.8);
+        strong {
+          color: white;
+        }
+      }
+    }
   }
 
-}
-
-.Footer{
-  display: grid;
-  grid-template-columns: 60% 40%;
-  align-items: center;
-  justify-items: center;
-
-  .Highlights{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin: 1em;
-  }
-}
- 
-  .VideoContainer{
-    video{
+  .VideoContainer {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    video {
       height: 100%;
       width: 100%;
       border-radius: 1em 1em 0 0;
-
+      object-fit: fill;
     }
   }
 }

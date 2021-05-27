@@ -1,0 +1,14 @@
+@import "../../scss/colors.scss";
+@import "../../scss/fonts.scss";
+@import "../../scss/devices.scss";
+
+.StopWatch {
+  .Circle {
+    display: grid;
+    transform: scale(5);
+    //color: red;
+  }
+  .TimeLeft {
+    font-size: 1.3rem;
+  }
+}

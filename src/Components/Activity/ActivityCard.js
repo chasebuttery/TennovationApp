@@ -4,12 +4,13 @@ import moment from "moment";
 import "./ActivityCard.scss";
 import firebase from "../../firebase";
 import { addUserToActivity } from "../../Backend/ActivitiesDB";
-import { CircularProgressProps } from '@material-ui/core/CircularProgress';
-import PropTypes from 'prop-types';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import { Fab } from "@material-ui/core";
+import { CircularProgressProps } from "@material-ui/core/CircularProgress";
+import PropTypes from "prop-types";
+import BookmarkIcon from "@material-ui/icons/TurnedInNot";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import { Fab, Button } from "@material-ui/core";
 import { getMembersGoingList } from "../../Backend/ActivitiesDB";
 import Member from "../Member/Member";
 import "./ActivityCard.scss";
@@ -23,7 +24,6 @@ import Sport from "../../Images/tennis.png";
 import Auth from "../../Auth";
 import MoreIcon from "../../Images/Go.png";
 
-
 export default function ActivityCard(props) {
   const { activity } = props;
   const [members, setMembers] = useState([]);
@@ -34,7 +34,6 @@ export default function ActivityCard(props) {
     id: Auth.getUserID() || "",
     profileImg: Auth.getProfileImg(),
   });
-
 
   const [img, setImg] = useState("");
 
@@ -65,7 +64,7 @@ export default function ActivityCard(props) {
 
   useEffect(inActivity, []);
 
-  function downloadImg() {
+  async function downloadImg() {
     // Create a reference to the file we want to download
     var storageRef = firebase.storage().ref();
 
@@ -85,8 +84,8 @@ export default function ActivityCard(props) {
         //console.log("ig not downloaded")
       });
   }
-  
-  function getVideo() {
+
+  async function getVideo() {
     // Create a reference to the file we want to download
     var storageRef = firebase.storage().ref();
 
@@ -122,39 +121,56 @@ export default function ActivityCard(props) {
     );
     setMembers(filteredMembers);
   }
-  
 
-  downloadImg();
-  getVideo();
+  useEffect(downloadImg, []);
+  useEffect(getVideo, []);
 
   var progress = 10;
 
   return (
-    <div className="ActivityCard" onClick = {goToActivityPage}>
-
-      <div className = "VideoContainer">
-          <video src = {vid}  muted autoPlay loop/>
+    <div className="ActivityCard" onClick={goToActivityPage}>
+      <div className="VideoContainer">
+        <video
+          src={vid}
+          muted
+          onMouseOver={(event) => event.target.play()}
+          onMouseOut={(event) => event.target.pause()}
+        />
       </div>
 
-      <div className="Header">
-        <div className = "Main">
-             {/* <h4 className="Title">{activity.title}</h4>
-              */}
-              <Typography className = "Title" variant = "h2" >Tennis Class</Typography>
-         
-              <Typography className = "Info" variant = "body1" >Tennis Class</Typography>
-        {/* <img className="Timer" src={timer} /> */}
+      <div className="ActivityHeader">
+        <div className="Main">
+          {/* <h4 className="Title">{activity.title}</h4>
+           */}
+          <Typography className="Title" variant="h2">
+            {activity?.title}
+          </Typography>
+
+          <Typography className="Info" variant="body1">
+            {activity?.location}
+          </Typography>
+
+          <Typography className="Hours" variant="body1">
+            {activity?.hours}
+          </Typography>
+
+          {/* <img className="Timer" src={timer} /> */}
         </div>
-        <div className = "Progress">
-        <StopWatch activityTime = {activity?.time}/>
+        <div className="TimerContainer">
+          <StopWatch className="Timer" activityTime={activity?.time} />
+        </div>
+        <div className="BookmarkContainer">
+          <BookmarkIcon className="Bookmark" />
         </div>
       </div>
-
 
       <div className="Footer">
-      <div className="Highlights">
-        <p> Tennis : Group Size : 24/28 people : Competition : 6-730pm : 3 weeks left </p>
-      </div>
+        <div className="MoreContainer">
+          {/* <p> Tennis : Group Size : 24/28 people : Competition : 6-730pm : 3 weeks left </p> */}
+          <Fab className="MoreButton" variant="entended">
+            <strong> More Info </strong>
+          </Fab>
+        </div>
         <JoinActivity
           activityID={activity.activityID}
           onSubmit={refreshMembersGoing}
@@ -162,7 +178,6 @@ export default function ActivityCard(props) {
           inActivity={isInActivity}
         />
       </div>
-
     </div>
   );
 }
