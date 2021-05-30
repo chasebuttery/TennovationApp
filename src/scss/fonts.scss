@@ -23,6 +23,16 @@
 }
 
 @font-face {
+  font-family: "Tron";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Tron"), local("Tron"),
+    url("./tron.ttf") format("truetype"); /* Safari, Android, iOS */
+}
+
+
+
+@font-face {
   font-family: "SF Compact";
   font-style: normal;
   font-weight: 400;
