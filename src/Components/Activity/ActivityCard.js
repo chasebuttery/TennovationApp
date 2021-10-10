@@ -54,7 +54,7 @@ export default function ActivityCard(props) {
 
   function inActivity() {
     members.forEach((personGoing) => {
-      if ((personGoing.id = member.id)) {
+      if ((personGoing.id == member.id)) {
         setIsInActivity(true);
       }
     });
@@ -64,11 +64,11 @@ export default function ActivityCard(props) {
 
   useEffect(inActivity, []);
 
-  async function downloadImg() {
+   function downloadImg() {
     // Create a reference to the file we want to download
     var storageRef = firebase.storage().ref();
 
-    var starsRef = storageRef.child("images/" + activity.imgID + ".jpg");
+    var starsRef = storageRef.child("activityImage/" + activity.imgUrl);
     //console.log('getting img')
 
     // Get the download URL
@@ -85,13 +85,15 @@ export default function ActivityCard(props) {
       });
   }
 
-  async function getVideo() {
+   function getVideo() {
     // Create a reference to the file we want to download
     var storageRef = firebase.storage().ref();
 
     var starsRef = storageRef.child("videos/" + activity?.vidUrl);
     //console.log('getting img')
 
+
+    if(activity?.vidUrl){
     // Get the download URL
     const vidUrl = starsRef
       .getDownloadURL()
@@ -102,7 +104,9 @@ export default function ActivityCard(props) {
       .catch(function(error) {
         // A full list of error codes is available at
         //console.log("ig not downloaded")
+        //USE AN IMAGE INSTEAD
       });
+    }
   }
 
   function refreshMembersGoing(member) {
@@ -129,19 +133,19 @@ export default function ActivityCard(props) {
 
   return (
     <div className="ActivityCard" onClick={goToActivityPage}>
-      <div className="VideoContainer">
-        <video
+      <div className="ImageContainer">
+        {/* <video
           src={vid}
           muted
           onMouseOver={(event) => event.target.play()}
           onMouseOut={(event) => event.target.pause()}
-        />
+        /> */}
+        <img className = "Image" src = {img}/>
       </div>
 
       <div className="ActivityHeader">
         <div className="Main">
-          {/* <h4 className="Title">{activity.title}</h4>
-           */}
+          
           <Typography className="Title" variant="h2">
             {activity?.title}
           </Typography>
@@ -154,14 +158,18 @@ export default function ActivityCard(props) {
             {activity?.hours}
           </Typography>
 
-          {/* <img className="Timer" src={timer} /> */}
         </div>
+        <div className = "Secondary">
         <div className="TimerContainer">
           <StopWatch className="Timer" activityTime={activity?.time} />
         </div>
         <div className="BookmarkContainer">
           <BookmarkIcon className="Bookmark" />
+          <Typography className="Spots" variant="body1">
+            {activity?.spots || "0"} spots left
+          </Typography>
         </div>
+      </div>
       </div>
 
       <div className="Footer">

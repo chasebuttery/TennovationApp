@@ -112,7 +112,7 @@ export default function PlayPage(props) {
 
 
       <div className = "SubHeader">
-      <div className = "Timer">
+      <div className = "Time">
           <Timer />
         </div>
         <div className = "FilterButton">

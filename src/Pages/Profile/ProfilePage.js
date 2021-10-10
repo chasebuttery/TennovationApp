@@ -9,7 +9,8 @@ import Ticket from "../../Images/ticket.png";
 import Token from "../../Images/token.png";
 import SignIn from '../../Images/gsignin1.png';
 
-export default function SignInPage() {
+
+export default function ProfilePage() {
   var provider = new firebase.auth.GoogleAuthProvider();
 
   const history = useHistory();
@@ -18,37 +19,35 @@ export default function SignInPage() {
   const memberStat = window.localStorage.getItem("member") === "true" || false;
 
   const userID = window.localStorage.getItem("userID") || "noone";
+  const userName = window.localStorage.getItem("userName") || "noone";
 
   const [memberStatus, setMemberStatus] = useState(memberStat);
   const [member, setMember] = useState();
-  const [user, setUser] = useState({});
+  const [userLocal, setUserLocal] = useState({});
   const [imgID, setImgID] = useState("");
 
   const tokens = "10";
   const tickets = "1";
 
-  const location = useLocation();
 
-  useEffect(() => {
-    console.log("Location changed");
-  }, [location]);
 
-  //let userdetails = firebase.auth().currentUser;
-  //console.log(userdetails, "DETAILS");
+
+  let userdetails = firebase.auth().currentUser;
+  console.log(userdetails, "DETAILS");
 
   useEffect(() => {
     async function getUserData() {
       const userData = await getUser();
 
-      setUser(userData);
-      console.log(user, "status");
+      setUserLocal(userData);
+      console.log(userData, "status");
 
       console.log(member, "statsSER");
     }
     getUserData();
-  }, [member, user, memberStat]);
+  }, []);
 
-  function signInWithGoogle(e) {
+  async function signInWithGoogle(e) {
     e.preventDefault();
     firebase
       .auth()
@@ -85,7 +84,7 @@ export default function SignInPage() {
       });
   }
 
-  function signOutWithGoogle(e) {
+  async function signOutWithGoogle(e) {
     e.preventDefault();
     firebase
       .auth()
@@ -108,26 +107,28 @@ export default function SignInPage() {
       });
   }
 
-  console.log("WHAT IS MEMBER", member);
-  console.log("what is stat local", memberStat);
+  function goToCreatePage() {
+    history.push("/create");
+  }
 
   return (
     <div className="ProfilePage">
-      <h1>Member Profile</h1>
+      <h1>Member Profile </h1>
       <p>Customize your profile and manage your membership.</p>
       <div className="GoogleSignInOut">
+        <button>
           <img className = "SignIn" src = {SignIn} onClick={signInWithGoogle} />
+          </button>
   
-        <p className = "SignOut" onClick={signOutWithGoogle}>
+        <button className = "SignOut" onClick={signOutWithGoogle}>
           SIGN OUT
-        </p>
+        </button>
       </div>
-      {memberStat === true ?(
         <div className="MemberStatus">
           <h3>Member:</h3>
           <img className="CheckIcon" src={Check} />
         </div>
-      ) : <p className = "Warning">^SIGN IN AND BECOME A MEMBER TO JOIN ACTIVITIES^</p>}
+   <p className = "Warning">^SIGN IN AND BECOME A MEMBER TO JOIN ACTIVITIES^</p>
       <div className="Currency">
         <div className = "Token">
           <h3>{"Tokens: " + tokens}</h3>
@@ -141,6 +142,8 @@ export default function SignInPage() {
       <div className = "Buy">
        <button>Get More Tokens/Tickets</button> 
       </div>
+
+      <button className = "Create" onClick = {goToCreatePage}> CREATE ACTIVITY</button>
 
     </div>
   );

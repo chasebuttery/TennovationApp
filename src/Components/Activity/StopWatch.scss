@@ -5,11 +5,14 @@
 .StopWatch {
   .Circle {
     display: grid;
-    transform: scale(5);
-    //color: red;
+    //transform: scale(5);
+    color: lightblue;
+  }
+  .CircleAlert {
+      color: red;
   }
   .TimeLeft {
     font-size: 1.3rem;
-    font-family: "Tron";
+    
   }
 }

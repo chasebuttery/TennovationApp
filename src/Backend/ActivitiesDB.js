@@ -67,6 +67,7 @@ export async function getActiveActivities() {
   var time = new Date();
 
   //query = query.where("time", "<=", time);
+  query = query.orderBy("time", "asc").limit(10).where("time", ">=" ,time);
 
   const activityData = query.get().catch(function(error) {
     console.log("Error getting documents: ", error);

@@ -16,23 +16,8 @@ export default function NavBar() {
 
   const location = useLocation();
 
-  useEffect(() => {
-    console.log("Location changed");
-  }, [location]);
+  
 
-  // useEffect(() => {
-  //   async function getMemberStatus() {
-
-  //     const user = await Auth.isMember();
-
-  //       setMember(user);
-  //       console.log(user,"status")
-
-  //       console.log(member,"statsSER")
-
-  //   }
-  //   getMemberStatus();
-  // },);d
 
   useEffect(() => {
     async function getProfileImg() {
@@ -41,11 +26,12 @@ export default function NavBar() {
       console.log("memmbebrrr");
     }
     getProfileImg();
-  }, [profileIcon, location]);
+  }, []);
 
   function expandNavbar() {
     setIsExpanded(!isExpanded);
   }
+  
 
   console.log("expand", isExpanded);
 

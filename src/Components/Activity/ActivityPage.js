@@ -113,35 +113,37 @@ export default function ActivityPage(props) {
   // }
 
   return (
+
     <div className="ActivityPage">
-      <h1 className="ActivityHeader">{fullActivity?.title}</h1>
+<div className = "Breadcrumbs">
+    <button
+    className="Results"
+    onClick={(e) => {
+      e.preventDefault();
+      history.push("/explore");
+    }}
+  >
+    Back To Results
+  </button>
+  </div>
+  
+      <div className = "ImageContainer">
+      <img src = {img} />
+  </div>
 
       <div className="Info">
-        <div className="What">
-          {fullActivity?.sport === "tennis" ? (
-            <img className="Icon" src={Tennis} />
-          ) : (
-            <p>fullActivity.sport</p>
-          )}
-        </div>
-        <div className="Where">
-          {fullActivity.location === "Hollinger" ? (
             <img className="Logo" src={Hollinger} />
-          ) : (
-            <p>{fullActivity.location}</p>
-          )}
+      <h1 className="ActivityHeader">{fullActivity?.title}</h1>
+      <p>{fullActivity.sport}</p>
+            <div className = "Token">
+              <p>{fullActivity.cost}</p>
+              <img className="Icon" src={Token} />
+        
         </div>
-        <div className="Cost">
-          <p>{fullActivity.cost}</p>
-          <img className="Icon" src={Token} />
-        </div>
-      </div>
-
-      {showImg && <img className="Image" src={img} />}
-
-      {/* <p>{fullActivity?.time}</p> */}
 
       <p>{fullActivity?.description}</p>
+      </div>
+
 
       <JoinActivity
         activityID={fullActivity.activityID}
@@ -155,7 +157,6 @@ export default function ActivityPage(props) {
           <img className="CreatorImg" src={fullActivity.creatorImage} />
           <p> {fullActivity.creatorID}</p>
         </div>
-
         <div className="MembersInfo">
           <p>Members Going:</p>
           <div className="MembersGoingGrid">
@@ -167,16 +168,6 @@ export default function ActivityPage(props) {
           </div>
         </div>
       </div>
-
-      <button
-        className="Results"
-        onClick={(e) => {
-          e.preventDefault();
-          history.push("/explore");
-        }}
-      >
-        Back To Results
-      </button>
     </div>
   );
 }

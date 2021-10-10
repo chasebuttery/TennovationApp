@@ -10,16 +10,19 @@ import "../PlayPage.scss";
 
 
 export default function Timer() {
-    const [timer, setTimer] = useState(new Date())
- 
+    const [timer, setTimer] = useState()
 
     function updateTime() {
         let interval = setInterval(() =>{
-            setTimer(new Date());
+            var tempTime = new Date();
+            setTimer(tempTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}));
         }, 1000)
     }
 
-    useEffect(updateTime, [])
+    useEffect(updateTime, []);
+
+    console.log("TIMER", timer);
+    
 
 
   return (
@@ -27,7 +30,7 @@ export default function Timer() {
 
 
     <div className = "TimeString">
-        <p>{timer.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+        <p>{timer || "~"}</p>
     </div>
     </>
   );

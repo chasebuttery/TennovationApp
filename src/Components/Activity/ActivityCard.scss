@@ -4,7 +4,7 @@
 
 .ActivityCard {
   display: grid;
-  grid-template-rows: 60% 25% 15%;
+  grid-template-rows: 16rem 10rem 6rem;
   height: 32em;
   width: 32em;
   background-color: white;
@@ -22,15 +22,16 @@
 
   .ActivityHeader {
     display: grid;
-    grid-template-columns: 60% 20% 20%;
+    grid-template-columns: 60% 40%;
     align-items: center;
     justify-items: center;
     width: 100%;
 
+
     .Main {
       display: grid;
       justify-self: start;
-      grid-template-rows: 50% 25% 25%;
+      grid-template-rows: 60% 20% 20%;
       height: 100%;
       //margin-left: 1em;
       margin: 0 0 0 1em;
@@ -42,19 +43,42 @@
         color: #171a20;
       }
     }
+
+    .Secondary{
+      display: grid;
+      grid-template-columns: 50% 50%;
+      height: 100%;
+      width: 100%;
+    }
     .TimerContainer {
       display: grid;
-      justify-self: end;
+      justify-self: center;
       // .Timer {
       //   transform: scale(2.6);
+      height: 4rem;
+      align-self: center;
+      width: 100%;
       // }
     }
     .BookmarkContainer {
       display: grid;
       align-self: start;
+      justify-items: center;
+      grid-template-rows: 60% 40%;
+      height: 100%;
       margin-top: 1em;
       .Bookmark {
         transform: scale(2.4);
+      }
+      .Spots{
+        display: grid;
+        //align-self: end;
+        font-size: .8rem;
+        color: red;
+        font-weight: 800;
+        //justify-self: center;
+   
+        
       }
     }
   }
@@ -66,7 +90,10 @@
     align-items: center;
     justify-items: center;
 
+   
+
     .MoreContainer {
+    
       .MoreButton {
         background-color: $color-blue;
         height: 3rem;
@@ -89,5 +116,45 @@
       border-radius: 1em 1em 0 0;
       object-fit: fill;
     }
+  }
+
+    .ImageContainer {
+      display: grid;
+      height: 16rem;
+      width: auto;
+      align-self: center;
+justify-self: center;
+     
+      .Image{
+        display: grid;
+        max-height: 16rem;
+        width: 100%;
+        align-self: center;
+        justify-self: center;
+        border-radius: 1em 1em 0 0;
+      }
+    }
+
+
+}
+
+@include mobile {
+  .ActivityCard{
+
+display: grid;
+  grid-template-rows: 16rem 16rem 6rem;
+  height: 38rem;
+  width: 100%;
+
+
+.ActivityHeader{
+  display: grid;
+  grid-template-rows: 6rem 5rem 5rem;
+  grid-template-columns: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+
   }
 }
